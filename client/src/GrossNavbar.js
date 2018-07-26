@@ -12,6 +12,8 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem } from 'reactstrap';
+import { Link, Route } from 'react-router-dom';
+import Expenses from './Expenses.js';
 
 class GrossNavbar extends Component {
     constructor(props) {
@@ -36,9 +38,7 @@ class GrossNavbar extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav pills>
                             <NavItem>
-                            <NavLink  active>
-                                <Link to="/expenses">Expenses</Link>
-                            </NavLink>
+                                <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
                             </NavItem>
                             <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                 <DropdownToggle nav caret>
@@ -52,9 +52,6 @@ class GrossNavbar extends Component {
                                     <DropdownItem>Another Action</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
-                            <NavItem>
-                            <NavLink disabled href="#">Expenses</NavLink>
-                            </NavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>
