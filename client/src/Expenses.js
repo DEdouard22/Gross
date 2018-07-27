@@ -9,28 +9,24 @@ class Expenses extends Component {
     constructor() {
         super();
         this.state = {
-            expenses: [
-                {
-                    name: '',
-                    amount: '',
-                    cord: '',
-                    frequency: '',
-                }
-            ]
+            expenses: []
         };
+        this.handleChange = this.handleChange.bind(this);
+    };
+
+    handleChange(event) {
+        let data = {};
+        data[event.target.name] = event.target.value;
+        this.setState({...data});
     };
 
     addExpense = () => {
-        var newExpenses = {...this.state.expenses.slice()};
+        var newExpenses = [...this.state.expenses];
 
-        var expenseToBeAdded = {
-
+        var expenseToBeAdded = {"name": this.state.name, "amount": this.state.amount, cord: this.state.cord, frequency: this.state.frequency
         };
 
-    //     newExpenses.push(expenseToBeAdded);
-    //     console.log(newExpenses)
-
-    //     this.setState({ expenses: newExpenses})
+        this.setState({ expenses: [...this.state.expenses, expenseToBeAdded ]});
     }
 
     render() {
@@ -40,41 +36,46 @@ class Expenses extends Component {
         );
 
         return (
-            <Form>
-                <FormGroup row>
-                    <Label for="enterExpense" sm={2}>Enter Expense</Label>
-                    <Col sm={10}>
-                        <Input type="expenseName" value={this.state.name} name="name" id="expenseName" placeholder="Enter name of the expense" />
-                    </Col>
-                </FormGroup>
-                <FormGroup row>
-                    <Label for="creditOrDebit" sm={2}>Credit or Debit</Label>
-                    <Col sm={10}>
-                        <Input type="select" value={this.state.cord} name="cord" id="expenseCOrD">
-                            <option>Credit</option>
-                            <option>Debit</option>
-                        </Input>
-                    </Col>
-                </FormGroup>
-                <FormGroup row>
-                    <Label for="enterAmount" sm={2}>Enter Amount</Label>
-                    <Col sm={10}>
-                        <Input type="expenseAmount" value={this.state.amount} name="amount" id="expenseAmount" placeholder="Enter amount of the expense" />
-                    </Col>
-                </FormGroup>
-                <FormGroup row>
-                    <Label for="enterFrequency" sm={2}>Frequency</Label>
-                    <Col sm={10}>
-                        <Input type="select" value={this.state.frequency} name="frequency" id="expenseFrequency">
-                            <option>Monthly</option>
-                            <option>Bi-Monthly</option>
-                            <option>Bi-Weekly</option>
-                            <option>Weekly</option>
-                        </Input>
-                    </Col>
-                </FormGroup>
-                <Button onClick={ this.addExpense.bind(this) }>Submit</Button>
-            </Form>
+            <div>
+                <Form onSubmit={ this.addExpense.bind(this) }>
+                    <FormGroup row>
+                        <Label for="enterExpense" sm={2}>Enter Expense</Label>
+                        <Col sm={10}>
+                            <Input required type="expenseName" value={this.state.name} onChange={this.handleChange} name="name" id="expenseName" placeholder="Enter name of the expense" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="creditOrDebit" sm={2}>Credit or Debit</Label>
+                        <Col sm={10}>
+                            <Input required type="select" value={this.state.cord} onChange={this.handleChange} name="cord" id="expenseCOrD">
+                                <option disabled selected value="">please select</option>
+                                <option>Credit</option>
+                                <option>Debit</option>
+                            </Input>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="enterAmount" sm={2}>Enter Amount</Label>
+                        <Col sm={10}>
+                            <Input type="expenseAmount" onChange={this.handleChange} value={this.state.amount} name="amount" id="expenseAmount" placeholder="Enter amount of the expense" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="enterFrequency" sm={2}>Frequency</Label>
+                        <Col sm={10}>
+                            <Input type="select" value={this.state.frequency} onChange={this.handleChange} name="frequency" id="expenseFrequency">
+                                <option disabled selected value="">please select</option>
+                                <option>Monthly</option>
+                                <option>Bi-Monthly</option>
+                                <option>Bi-Weekly</option>
+                                <option>Weekly</option>
+                            </Input>
+                        </Col>
+                    </FormGroup>
+                    <Button type="submit">Submit</Button>
+                </Form>
+                {expensesJSX}
+            </div>
         );
     };
 }
