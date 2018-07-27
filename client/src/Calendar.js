@@ -46,7 +46,9 @@ class Calendar extends Component {
           );
         }
     
-        return <div className="days row">{days}</div>;
+        return <Container> 
+                <div className="days row">{days}</div>
+                </Container> ;
       }
 
     onDateClick = day => {
