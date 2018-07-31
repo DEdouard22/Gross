@@ -5,15 +5,6 @@ class Expense extends Component {
 
     constructor() {
         super();
-        // this.state = {
-        //     amount = 0,
-        //     name = '',
-        //     frequency = '',
-        //     term = 0,
-        //     principle = 0,
-        //     interestRate = 0
-
-        // }
     }
 
     render() {

@@ -7,12 +7,12 @@ class ExpenseItem extends Component {
         return (
             <div>
                 <div className="left">
-                    <b>{this.props.name}</b>
+                    <b>{this.props.description}</b>
                     <div>{this.props.amount}</div>
                 </div>
                 <div className="right">
                     <b>{this.props.frequency}</b>
-                    <div>{this.props.created_cord}</div>
+                    <div>{this.props.incomeDebt}</div>
                 </div>
             </div>
         )
