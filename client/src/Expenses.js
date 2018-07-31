@@ -39,7 +39,7 @@ class Expenses extends Component {
         .then(({data}) => {
             this.setState({expenses:data})
         });
-    }
+    };
 
     shouldComponentUpdate() {
         return true;
