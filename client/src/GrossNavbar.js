@@ -40,6 +40,9 @@ class GrossNavbar extends Component {
                             <NavItem>
                                 <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink tag={ Link } to="/user" active>UserName</NavLink>
+                            </NavItem>
                             <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                 <DropdownToggle nav caret>
                                     My Account
