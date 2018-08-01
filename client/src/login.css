@@ -1,0 +1,29 @@
+.App {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background-color: #201F24; */
+    background-color: #ededed;
+  }
+  
+  
+  button.kep-login-facebook.metro {
+    /* background-color: rgb(104, 137, 175); */
+    background-color: #db3236;
+  }
+  
+  .App-header {
+  /* background: url('money.jpg'); */
+    background-color: lightgrey;
+    background-position: center;
+    height: 370px;
+    padding: 2px;
+    overflow-y: hidden;
+  }
+  
+  .fbauth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

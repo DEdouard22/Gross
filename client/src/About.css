@@ -1,0 +1,16 @@
+h2 {
+    text-align: center;
+    margin-top: 20 auto;
+    padding-top: .8em;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: rgb(71, 66, 66);
+    font-size: 2em;
+    font-family: 'Zilla Slab';
+    font-weight: 20;
+}
+
+p.text {
+    text-align: center;
+}
+

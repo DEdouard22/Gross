@@ -14,6 +14,10 @@ import {
     DropdownItem } from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
 import Expenses from './Expenses.js';
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
+
+
 
 class GrossNavbar extends Component {
     constructor(props) {
@@ -32,7 +36,7 @@ class GrossNavbar extends Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
+                <Navbar fluid color="light" light expand="lg">
                     <NavbarBrand href="/">GRO$$</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -40,7 +44,21 @@ class GrossNavbar extends Component {
                             <NavItem>
                                 <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
                             </NavItem>
-                            <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+
+                            <NavItem>
+                                <NavLink tag={ Link } to="/login" active>Log In</NavLink>
+                            </NavItem>
+                        </Nav>
+
+                            <Nav pullRight>
+                                <NavItem tag={ Link } to="about" active>About Gross</NavItem>
+                            </Nav>
+
+                            <Nav pullRight>
+                                <NavItem tag={ Link } to="home" active>Home</NavItem>
+                            </Nav>
+
+                            {/* <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                 <DropdownToggle nav caret>
                                     My Account
                                 </DropdownToggle>
@@ -51,9 +69,8 @@ class GrossNavbar extends Component {
                                     <DropdownItem divider />
                                     <DropdownItem>Another Action</DropdownItem>
                                 </DropdownMenu>
-                            </Dropdown>
-                        </Nav>
-                    </Collapse>
+                            </Dropdown> */}
+                        </Collapse>
                 </Navbar>
             </div>
         );
