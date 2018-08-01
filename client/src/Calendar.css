@@ -18,5 +18,10 @@
 }
 
 .othermonth {
-    background: red;
+    background: darkgray;
 }
+
+.othermonth > .list-group-item {
+    background: transparent;
+}
+
