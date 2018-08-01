@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Progress } from 'reactstrap';
+import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Progress, Row, Col } from 'reactstrap';
 import './UserAccount.css';
+import User from './User.js';
 
 class UserAccount extends Component {
     constructor(props) {
@@ -10,7 +11,29 @@ class UserAccount extends Component {
         this.togglePayment = this.togglePayment.bind(this);
         this.state = {
             dropdownOpenHouse: false,
-            dropdownOpenPay: false
+            dropdownOpenPay: false,
+            users: [
+                {
+                id: 1,
+                name: "User 1",
+                description:"description 1"
+            },
+            {
+                id: 2,
+                name: "User 2",
+                description: "description 2"
+            },
+            {
+                id: 3,
+                name: "User 3",
+                description: "description 3"
+            },
+            {
+                id: 4,
+                name: "User 4",
+                description: "description 4"
+            }
+            ]
         };
     }
 
@@ -27,6 +50,14 @@ class UserAccount extends Component {
     }
 
     render() {
+        let usersInfo = this.state.users.map(user => {
+            return (
+                <Col key={user.id}>   
+                    <User user={user}/> 
+                </Col> 
+            )
+        })
+
         return(
             <div>
                 <Jumbotron className="jumbotron" fluid>
@@ -45,6 +76,9 @@ class UserAccount extends Component {
                                 <div onClick={this.toggleHousehold}>Household User 2</div>
                             </DropdownMenu>
                         </Dropdown>
+                        <Row>
+                            {usersInfo}
+                        </Row>
                     </Container>
                 </Jumbotron>
                 <Dropdown isOpen={this.state.dropdownOpenPay} toggle={this.togglePayment}>
