@@ -10,6 +10,7 @@ const db        = {};
 const dotenv = require('dotenv');
 dotenv.load();
 
+
 if (process.env.DB_HOST) {
   var sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`);
 } else if (config.use_env_variable) {
