@@ -7,8 +7,13 @@ const basename  = path.basename(__filename);
 const env       = process.env.NODE_ENV || 'development';
 const config    = require(__dirname + '/../config/config.json')[env];
 const db        = {};
+const dotenv = require('dotenv');
+dotenv.load();
 
-if (config.use_env_variable) {
+
+if (process.env.DB_HOST) {
+  var sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`);
+} else if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
