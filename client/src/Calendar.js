@@ -15,6 +15,7 @@ class Calendar extends Component {
 
     renderHeader() {
         const dateFormat = "MMMM YYYY";
+        
         return (
         <Container>    
             <Row className="header">    
