@@ -4,12 +4,14 @@ import { Container, Row, Col} from 'reactstrap';
 import { PaginationLink } from 'reactstrap';
 import './Calendar.css'
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import axios from 'axios';
 
 class Calendar extends Component {
     constructor(){
         super();
         this.state = {
-            currentMonth: new Date()
+            currentMonth: new Date(), 
+            calendarData: []
         }
     }
 
@@ -127,6 +129,13 @@ class Calendar extends Component {
     this.setState({
         currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
     });
+    };
+
+    componentDidMount() {
+        axios.get('/api/expenses')
+        .then(({data}) => {
+            this.setState({expenses:data})
+        });
     };
 
     render() {
