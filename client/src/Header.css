@@ -64,3 +64,15 @@ h3.Subtitle-bar {
     padding-top: 20px;
     height: 10px;
 }
+
+@media (min-width: 700px) {
+    .wrapper {
+        max-width: calc(50% -60px);
+    }
+}
+
+@media (min-width: 700px) {
+    app.title {
+        max-width: calc(50% -60px);
+    }
+}

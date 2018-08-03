@@ -21,7 +21,6 @@ class App extends Component {
             <div className="col-12">
           </div> 
         </div>
-        {/* < Auth /> */}
 
           <Switch>
               <Route path="/home" component={Home} />

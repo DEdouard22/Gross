@@ -3,14 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* background-color: #201F24; */
   background-color: #ededed;
-}
-
-
-button.kep-login-facebook.metro {
-  /* background-color: rgb(104, 137, 175); */
-  background-color: #db3236;
 }
 
 .App-header {
@@ -21,28 +14,23 @@ button.kep-login-facebook.metro {
   overflow-y: hidden;
 }
 
-.fbauth {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 @media screen and (min-width: 1224px) {
   #container{
-    width:100%;
+    /* width:%; */
   } 
 }
 
 @media screen and (max-width: 640px) {
   #container{
-    width:100%;
+    /* width:%; */
   } 
 }
 
 @media screen and (max-width: 320px) {
   #container{
-    width:100%;
-    background-size:100%;
+    /* width:%;
+    background-size:%; */
   } 
 }
 

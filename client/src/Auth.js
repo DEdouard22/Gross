@@ -36,15 +36,17 @@ let content = !!this.state.isAuthenticated ?
 (
     <div>
     <div className="row">
-        <div className="col-6">
+        <div className="col-3">
             <div className="facebook">
                 <button><a href="/auth/facebook">Login with Facebook</a></button>
             </div>
         </div>
 
+        <div className="col-3">
         <div className="vl"></div>
+        </div>
 
-        <div className="col-6">
+        <div className="col-3">
             <div className="google">
                 <button><a href="/auth/google">Login with Google</a></button>
             </div>
