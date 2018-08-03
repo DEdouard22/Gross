@@ -16,3 +16,12 @@
     padding: 0px;
     line-height: 30px;
 }
+
+.othermonth {
+    background: darkgray;
+}
+
+.othermonth > .list-group-item {
+    background: transparent;
+}
+
