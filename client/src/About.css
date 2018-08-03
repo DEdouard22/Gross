@@ -1,6 +1,7 @@
 h2 {
     text-align: center;
-    margin-top: 20 auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
     padding-top: .8em;
     text-transform: uppercase;
     letter-spacing: .2em;
@@ -10,7 +11,14 @@ h2 {
     font-weight: 20;
 }
 
-p.text {
+h4 {
+    display: flex;
     text-align: center;
+    margin-top: 20px;
+    justify-content: center
 }
 
+.vl-about {
+    border-left: 3px solid #61615F;
+    height: 100px;
+}

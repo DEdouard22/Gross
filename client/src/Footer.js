@@ -8,7 +8,7 @@ class Footer extends Component {
             <Row>
                 <Col xs={12} md={12} className="Footer-content">
                     <p className="Footer-title">
-                        GROSS FINANCIAL 2018 | ABOUT GROSS
+                        GROSS | 2018 
                     </p>
                 </Col> 
             </Row>

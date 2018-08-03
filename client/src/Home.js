@@ -6,7 +6,8 @@ import About from './About.js';
 import './Home.css';
 
 class Home extends Component {
-    return () {
+    render () {
+        return (
         <div>
             <header className="container">
                 <div className="col-12">
@@ -16,6 +17,7 @@ class Home extends Component {
                 </div>
             </header>
         </div>
+        );
     };
 }
 

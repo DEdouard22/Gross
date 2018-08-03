@@ -1,3 +1,66 @@
-.fb {
-    justify-items: left;
+body {
+    font-family: 'Zilla Slab';
+    color: #61615F;
+}
+
+h1 {
+	text-align: center;
+	padding: 50px;
+	margin: 50px 0 50px 0;
+}
+
+.nav-item {
+	display: inline;
+	margin: 20px;
+}
+
+.facebook {
+    display: flex;
+    align-items: center;
+}
+
+.facebook button {
+    display: flex;
+    justify-content: right;
+    background-color: #485466a8;
+    margin: 100px 0px 20px 300px;
+    padding-left: 30px; 
+    height: 70px;
+    border-radius: 25px;
+}
+
+.facebook button a {
+    color: white;
+    padding-right: 20px;
+}
+
+.facebook button:hover {
+	background-color: #6b82c7;
+	color: #FFF;
+    margin: 100px 0px 20px 300px;
+}
+
+.vl {
+    border-left: 6px solid #61615F;
+    height: 300px;
+}
+
+.google button {
+    justify-content: right;
+    background-color: #485466a8;
+    margin: 100px 300px 20px 100px;
+    padding-left: 20px; 
+    height: 70px;
+    border-radius: 25px;
+}
+
+.google button a {
+    color: white;
+    padding-right: 20px;
+}
+
+.google button:hover {
+	background-color: #6b82c7;
+	color: #FFF;
+    margin: 100px 300px 20px 100px;
 }

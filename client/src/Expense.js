@@ -34,11 +34,13 @@ class ExpenseDetail extends Component {
     render() {
         return (
             <div className="ExpenseDetail">
-                <div>
+                <div className="row">
+                <div className="col-10">
                     <b>{this.props.name}</b>
                     <div>{this.props.amount}</div>
                     <div>{this.props.cord}</div>
                     <div>{this.props.frequency}</div>
+                </div>
                 </div>
             </div>
         )

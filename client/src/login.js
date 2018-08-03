@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
-import FacebookLogin from 'react-facebook-login';
+// import FacebookLogin from 'react-facebook-login';
 import './login.css';
+import Auth from './Auth.js';
 import Footer from './Footer.js';
+import LoginNavbar from './LoginNavbar';
 
 
 
@@ -10,29 +12,21 @@ class Login extends Component {
 
   render() {  
     return (
-      <div> 
+      <div className="col-10"> 
+        <LoginNavbar />
           <div>
               <h1>Log In</h1>
           </div>
-
-          <div className="container">
-            <div className="login-form"></div>
-            <div className="auth-login">
-                <div className="facebook">
-                    <a href={FacebookLogin}></a>
-                </div>
-                <div className="google"></div>
-            </div>
+            <div>
+              <Auth />
           </div>
-        
-          
-          
-        
-        
-        
-        </div>
+          <div>
 
-  
+          </div>
+          <div>
+            <footer>GROSS | 2018</footer>
+          </div>
+        </div>
     );
     
   }

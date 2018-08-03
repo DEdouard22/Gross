@@ -27,7 +27,7 @@ button.kep-login-facebook.metro {
   align-items: center;
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (min-width: 1224px) {
   #container{
     width:100%;
   } 

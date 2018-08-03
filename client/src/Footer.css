@@ -8,19 +8,17 @@ background: #484848;
 } */
 
 .Footer-content {
-height: 100%;
-position: relative;
+/* position: relative; */
 display: inline-block;
 font-size: 1.2em;
 text-align: center;
 color: white;
 text-transform: uppercase;
+padding-top: 20px;
 }
 
 p.Footer-title {
-top: 25vh;
 width: 100%;
-/* height: 20vh; */
 background-color: #484848;
 letter-spacing: .2em;
 position: relative;
