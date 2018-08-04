@@ -3,7 +3,8 @@ import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
 import { Route, Switch } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import axios from 'axios'
+import axios from 'axios';
+import GrossNavbar from './GrossNavbar.js';
 
 class Expenses extends Component {
     constructor() {
