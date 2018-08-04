@@ -25,3 +25,10 @@
     background: transparent;
 }
 
+.dayGroup {
+    border-color: black;
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid gray;
+
+}

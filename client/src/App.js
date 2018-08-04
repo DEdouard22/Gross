@@ -8,6 +8,11 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Calendar from './Calendar';
 
 class App extends Component {
+  state = {
+    user: {
+      id: 1,
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -16,7 +21,7 @@ class App extends Component {
         </header>
         <Switch>
             <Route path="/expenses" component={Expenses} />
-            <Route path="/calendar" component={Calendar} />
+            <Route path="/calendar/:id" component={Calendar} />
         </Switch>
         <p className="App-intro">
         </p>
