@@ -58,9 +58,33 @@ h3.Subtitle-bar {
 .Spacing {
     height: 10px;
 }
-  
+
 .vl {
     border-left: 3px solid #61615F;
     padding-top: 20px;
     height: 10px;
+}
+
+@media (min-width: 700px) {
+    .wrapper {
+        max-width: calc(50% -60px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .App-title {
+        font-size: 6em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .App-title {
+        font-size: 4em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .App-title {
+        font-size: 4em;
+    }
 }

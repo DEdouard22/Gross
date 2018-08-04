@@ -15,29 +15,22 @@ h1 {
 }
 
 .facebook {
-    display: flex;
-    align-items: center;
+   padding-left: 480px
 }
 
 .facebook button {
-    display: flex;
-    justify-content: right;
     background-color: #485466a8;
-    margin: 100px 0px 20px 300px;
-    padding-left: 30px; 
-    height: 70px;
-    border-radius: 25px;
 }
 
 .facebook button a {
     color: white;
-    padding-right: 20px;
+    /* padding-right: 20px; */
 }
 
 .facebook button:hover {
 	background-color: #6b82c7;
 	color: #FFF;
-    margin: 100px 0px 20px 300px;
+    /* margin: 100px 0px 20px 300px; */
 }
 
 .vl {
@@ -46,21 +39,19 @@ h1 {
 }
 
 .google button {
-    justify-content: right;
     background-color: #485466a8;
-    margin: 100px 300px 20px 100px;
+    /* margin: 100px 300px 20px 100px;
     padding-left: 20px; 
-    height: 70px;
-    border-radius: 25px;
+    height: 70px; */
 }
 
 .google button a {
     color: white;
-    padding-right: 20px;
+    /* padding-right: 20px; */
 }
 
 .google button:hover {
 	background-color: #6b82c7;
 	color: #FFF;
-    margin: 100px 300px 20px 100px;
+    /* margin: 100px 300px 20px 100px; */
 }

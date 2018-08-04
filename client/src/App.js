@@ -21,7 +21,6 @@ class App extends Component {
             <div className="col-12">
           </div> 
         </div>
-        {/* < Auth /> */}
 
           <Switch>
               <Route path="/home" component={Home} />
@@ -29,9 +28,7 @@ class App extends Component {
               <Route path="/calendar" component={Calendar} />
               <Route path="/login" component={Login} />
           </Switch>         
-        </div>
-
-  
+        </div> 
     );
     
   }
