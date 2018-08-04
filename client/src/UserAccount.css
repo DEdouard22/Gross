@@ -11,5 +11,17 @@ h1 {
 }
 
 .payment {
+    padding-top: 20px;
+    padding-bottom: 30px;
     margin: 20px;
+}
+
+.userIcon {
+    width: 175px;
+    height: 150px;
+    margin: auto;
+}
+
+.nav-help {
+    color: grey;
 }
