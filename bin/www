@@ -54,6 +54,15 @@ function normalizePort(val) {
   return false;
 }
 
+// auth handlers - kamilah
+var expressServerUtils = require('express-server-utils')(server, port);
+expressServerUtils.listen();
+expressServerUtils.handleOnError();
+expressServerUtils.handleOnListening();
+
+const exitActions = [server.close];
+expressServerUtils.handleShutDown(exitActions);
+
 /**
  * Event listener for HTTP server "error" event.
  */

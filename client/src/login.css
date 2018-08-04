@@ -1,0 +1,48 @@
+body {
+    font-family: 'Zilla Slab';
+}
+
+h1 {
+	text-align: center;
+	
+}
+
+.nav-item {
+	display: inline;
+	margin: 20px;
+}
+/* /* 
+
+.facebook button {
+    display: flex;
+    justify-content: center;
+    background-color: #485466a8;
+    /* margin: 100px 0px 20px 300px; */
+    /* padding-left: 30px;  */
+    /* height: 70px;
+    width: 300px;
+    border-radius: 25px; */
+
+
+
+
+/* .google button {
+    justify-content: right;
+    background-color: #485466a8;
+    margin: 100px 300px 20px 100px;
+    padding-left: 20px; 
+    height: 70px;
+    border-radius: 25px;
+}  */
+
+
+footer {
+    background-color: #484848;
+    margin: 70px 0px 0px 0px;
+    letter-spacing: .2em;
+    position: relative;
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+
+}
