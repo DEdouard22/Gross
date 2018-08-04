@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import {
     Collapse,
-    Dropdown,
+    // Dropdown,
     Navbar,
     NavbarToggler,
     NavbarBrand,
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+    // UncontrolledDropdown,
+    // DropdownToggle,
+    // DropdownMenu,
+    // DropdownItem 
+} from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
-import Expenses from './Expenses.js';
+import './GrossNavbar.css';
+
+
+
 
 class GrossNavbar extends Component {
     constructor(props) {
@@ -32,7 +36,7 @@ class GrossNavbar extends Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
+                {/* <Navbar color="light" light expand="md">
                     <NavbarBrand href="/">GRO$$</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -57,7 +61,50 @@ class GrossNavbar extends Component {
                             </Dropdown>
                         </Nav>
                     </Collapse>
-                </Navbar>
+                </Navbar> */}
+                <div className="row">
+                    {/* <div className="col-2"></div> */}
+                    <div className="col-8">
+                        <Navbar className="navbar-centered" expand='sm'>
+                            <NavbarToggler onClick={this.toggle} />
+                            <Collapse isOpen={this.state.isOpen} navbar>
+                                <Nav>
+                                    {/* <NavItem>
+                                        <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
+                                    </NavItem> */}
+
+                                    <NavItem>
+                                        <button><NavLink tag={ Link } to="/login" active>Log In</NavLink></button>
+                                    </NavItem>
+                                </Nav>
+
+                                <Nav>
+                                    <NavItem>
+                                    <button><NavLink tag={ Link } to="/about" active>About Gross</NavLink></button>
+                                    </NavItem>
+                                </Nav>
+                                {/* <Nav>
+                                    <NavItem>
+                                    <button><NavLink tag={ Link } to="/home" active>Home</NavLink></button>
+                                    </NavItem>
+                                </Nav> */}
+                                    {/* <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                        <DropdownToggle nav caret>
+                                            My Account
+                                        </DropdownToggle>
+                                        <DropdownMenu>
+                                            <DropdownItem header>Header</DropdownItem>
+                                            <DropdownItem disabled>Action</DropdownItem>
+                                            <DropdownItem>Another Action</DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem>Another Action</DropdownItem>
+                                        </DropdownMenu>
+                                    </Dropdown> */}
+                                </Collapse>
+                        </Navbar>
+                    </div>
+                {/* <div className="col-2"></div> */}
+                </div>
             </div>
         );
     }
