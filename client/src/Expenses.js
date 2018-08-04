@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import axios from 'axios'
+import axios from 'axios';
+import LoginNavbar from './LoginNavbar.js';
 
 class Expenses extends Component {
     constructor() {
@@ -62,11 +63,15 @@ class Expenses extends Component {
         );
 
         return (
-            <div>
+            <div className="Expenses">
+                <header className="container">
+                    <LoginNavbar />
+                </header>
+                <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button>
                 <Form onSubmit={ this.addExpense.bind(this) }>
                     <FormGroup row>
                         <Label for="enterExpense" sm={2}>
-                            Enter Expense
+                            Description
                         </Label>
                         <Col sm={10}>
                             <Input
@@ -96,7 +101,7 @@ class Expenses extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="enterAmount" sm={2}>Enter Amount</Label>
+                        <Label for="enterAmount" sm={2}>Amount</Label>
                         <Col sm={10}>
                             <Input
                                 required

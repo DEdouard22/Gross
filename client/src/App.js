@@ -8,19 +8,18 @@ import UserAccount from './UserAccount.js';
 import Calendar from './Calendar';
 import Home from './Home.js';
 import Login from './login.js';
-import GrossNavbar from './GrossNavbar';
-
-
-
+import GrossNavbar from './GrossNavbar.js'
 
 class App extends Component {
 
-  render() {  
+  render() {
     return (
-        <div className="App"> 
+
+        <div className="App">
           <div className="row">
             <div className="col-12">
-          </div> 
+
+          </div>
         </div>
         {/* < Auth /> */}
           <GrossNavbar />
@@ -35,7 +34,7 @@ class App extends Component {
 
   
     );
-    
+
   }
 }
 

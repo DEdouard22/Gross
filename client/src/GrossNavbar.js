@@ -11,13 +11,10 @@ import {
     // UncontrolledDropdown,
     // DropdownToggle,
     // DropdownMenu,
-    // DropdownItem 
+    // DropdownItem
 } from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
 // import './GrossNavbar.css';
-
-
-
 
 class GrossNavbar extends Component {
     constructor(props) {
@@ -81,7 +78,7 @@ class GrossNavbar extends Component {
                                     <button><NavLink tag={ Link } to="/about" active>About Gross</NavLink></button>
                                     </NavItem>
                                 </Nav>
-                                
+
                                 </Collapse>
                         </Navbar>
                     </div>
