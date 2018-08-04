@@ -25,9 +25,6 @@ class ExpenseItem extends Component {
                 <div className="right">
                     <div>{this.props.incomeDebt}</div>
                     <div>{this.props.frequency}</div>
-                    <Button
-                        // onClick={ this.deleteTransaction.bind(this) }
-                        type="delete" >Delete</Button>
                 </div>
             </div>
         )
