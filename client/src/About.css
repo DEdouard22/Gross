@@ -22,3 +22,17 @@ h4 {
     border-left: 3px solid #61615F;
     height: 100px;
 }
+
+@media screen and (max-width: 320px) {
+
+    h2 {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    h4 {
+        font-size: 1em;
+    }
+}

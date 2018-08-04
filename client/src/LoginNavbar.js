@@ -35,10 +35,6 @@ class LoginNavbar extends Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav>
-                            {/* <NavItem>
-                                <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
-                            </NavItem> */}
-
                             <NavItem>
                                 <button><NavLink tag={ Link } to="/home" active>Home</NavLink></button>
                             </NavItem>

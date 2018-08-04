@@ -3,6 +3,7 @@ import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Progress,
 import './UserAccount.css';
 import logo from './userIcon.png';
 import axios from 'axios';
+import GrossNavbar from './GrossNavbar';
 
 class UserAccount extends Component {
     constructor(props) {
@@ -13,7 +14,8 @@ class UserAccount extends Component {
         this.state = {
             dropdownOpenHouse: false,
             dropdownOpenPay: false,
-            collapse: false
+            collapse: false,
+            transactions: [],
         };
 
         this.getUserData = this.getUserData.bind(this);
@@ -47,8 +49,9 @@ class UserAccount extends Component {
                 firstName: res.data.firstName,
                 lastName: res.data.lastName,
                 email: res.data.email,
-                description: res.data.description
+                transactions: res.data.Transactions
             })
+            console.log(res.data)
         })
     }
 
@@ -59,6 +62,7 @@ class UserAccount extends Component {
     render() {
         return(
             <div>
+                <GrossNavbar />
                 <Jumbotron className="jumbotron" fluid>
                     <Container fluid>
                         <h2>Welcome</h2>
@@ -84,7 +88,9 @@ class UserAccount extends Component {
                             </div>
                             <div className="expenseDescription">
                                 <ul>
-                                    <li>{this.state.description}</li>
+                                    {this.state.transactions.map((transaction) => {
+                                        return <li>{transaction.description}</li>
+                                    })}
                                 </ul>
                             </div>
                             <DropdownMenu>

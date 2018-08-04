@@ -6,12 +6,21 @@ const models = require('../server/models');
 router.get('/:id', function(req, res, next) {
   console.log(req.params)
   models.User.findOne({
-    where: {id: req.params.id}
-  })
+      where: {id: req.params.id},
+      include: [ models.Transaction ]
+    })
+      
     // where: {id: req.params.id}
     // include: [
     //       models.Transaction
   .then(user => {
+    // models.Transaction.findOne({
+    //   where: {id: user.id}
+    // })
+    // .then(transaction => {
+    //   res.send({transaction: transaction, user: user})
+    // })
+    console.log(user)
     res.send(user)
   })
   .catch(err => {

@@ -8,6 +8,7 @@ import UserAccount from './UserAccount.js';
 import Calendar from './Calendar';
 import Home from './Home.js';
 import Login from './login.js';
+import GrossNavbar from './GrossNavbar';
 
 
 
@@ -22,7 +23,7 @@ class App extends Component {
           </div> 
         </div>
         {/* < Auth /> */}
-
+          <GrossNavbar />
           <Switch>
               <Route path="/home" component={Home} />
               <Route path="/expenses" component={Expenses} />

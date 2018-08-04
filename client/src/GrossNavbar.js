@@ -14,7 +14,7 @@ import {
     // DropdownItem 
 } from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
-import './GrossNavbar.css';
+// import './GrossNavbar.css';
 
 
 
@@ -63,15 +63,13 @@ class GrossNavbar extends Component {
                     </Collapse>
                 </Navbar> */}
                 <div className="row">
-                    {/* <div className="col-2"></div> */}
+                <div className="col-2"></div>
+
                     <div className="col-8">
                         <Navbar className="navbar-centered" expand='sm'>
                             <NavbarToggler onClick={this.toggle} />
                             <Collapse isOpen={this.state.isOpen} navbar>
                                 <Nav>
-                                    {/* <NavItem>
-                                        <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
-                                    </NavItem> */}
 
                                     <NavItem>
                                         <button><NavLink tag={ Link } to="/login" active>Log In</NavLink></button>
@@ -83,28 +81,12 @@ class GrossNavbar extends Component {
                                     <button><NavLink tag={ Link } to="/about" active>About Gross</NavLink></button>
                                     </NavItem>
                                 </Nav>
-                                {/* <Nav>
-                                    <NavItem>
-                                    <button><NavLink tag={ Link } to="/home" active>Home</NavLink></button>
-                                    </NavItem>
-                                </Nav> */}
-                                    {/* <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                                        <DropdownToggle nav caret>
-                                            My Account
-                                        </DropdownToggle>
-                                        <DropdownMenu>
-                                            <DropdownItem header>Header</DropdownItem>
-                                            <DropdownItem disabled>Action</DropdownItem>
-                                            <DropdownItem>Another Action</DropdownItem>
-                                            <DropdownItem divider />
-                                            <DropdownItem>Another Action</DropdownItem>
-                                        </DropdownMenu>
-                                    </Dropdown> */}
+                                
                                 </Collapse>
                         </Navbar>
                     </div>
-                {/* <div className="col-2"></div> */}
-                </div>
+                    <div className="col-2"></div>
+            </div>
             </div>
         );
     }
