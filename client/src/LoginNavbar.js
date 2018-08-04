@@ -5,7 +5,7 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    NavLink, 
+    NavLink,
 } from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
 
@@ -40,9 +40,12 @@ class LoginNavbar extends Component {
                             </NavItem>
                         </Nav>
                         <Nav>
-                            <Nav>
+                            <NavItem>
                             <button><NavLink tag={ Link } to="/about" active>About Gross</NavLink></button>
-                            </Nav>
+                            </NavItem>
+                            <NavItem>
+                                <button><NavLink tag={ Link } to="/expenses" active>Expenses</NavLink></button>
+                            </NavItem>
                         </Nav>
                         </Collapse>
                 </Navbar>

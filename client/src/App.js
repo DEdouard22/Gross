@@ -7,19 +7,18 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Calendar from './Calendar';
 import Home from './Home.js';
 import Login from './login.js';
-
-
-
+import GrossNavbar from './GrossNavbar.js'
 
 class App extends Component {
 
-  render() {  
+  render() {
     return (
-      
-        <div className="App"> 
+
+        <div className="App">
           <div className="row">
             <div className="col-12">
-          </div> 
+
+          </div>
         </div>
 
           <Switch>
@@ -27,10 +26,10 @@ class App extends Component {
               <Route path="/expenses" component={Expenses} />
               <Route path="/calendar" component={Calendar} />
               <Route path="/login" component={Login} />
-          </Switch>         
-        </div> 
+          </Switch>
+        </div>
     );
-    
+
   }
 }
 
