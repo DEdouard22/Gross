@@ -1,0 +1,32 @@
+h1 {
+    color: black;
+}
+
+.jumbotron {
+    margin: auto 5px;
+}
+
+.goals {
+    margin: 0px 20px;
+}
+
+.payment {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin: 20px;
+}
+
+.userIcon {
+    width: 175px;
+    height: 150px;
+    margin: auto;
+}
+
+.nav-help {
+    color: grey;
+    text-align: center;
+}
+
+h2 {
+    padding: 5px;
+}
