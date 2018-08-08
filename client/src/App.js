@@ -23,10 +23,10 @@ class App extends Component {
         </div>
 
           <Switch>
-              <Route path="/home" component={Home} />
-              <Route path="/expenses" component={Expenses} />
-              <Route path="/calendar" component={Calendar} />
+              <Route path="/expenses" component={Expenses} /> 
+              <Route path="/calendar" component={Calendar} /> 
               <Route path="/login" component={Login} />
+              <Route path="/" component={Home} />
           </Switch>         
         </div> 
     );

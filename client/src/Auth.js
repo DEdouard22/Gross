@@ -43,8 +43,8 @@ let content = !!this.state.isAuthenticated ?
         </div> 
 
             <div className="col-1">
-         <div className="vl"></div> 
-         </div>
+        <div className="vl"></div> 
+        </div>
 
         <div className="col-6">
             <div className="google">
