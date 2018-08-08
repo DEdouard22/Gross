@@ -1,0 +1,38 @@
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding-top: .8em;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: rgb(71, 66, 66);
+    font-size: 2em;
+    font-family: 'Zilla Slab';
+    font-weight: 20;
+}
+
+h4 {
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    justify-content: center
+}
+
+.vl-about {
+    border-left: 3px solid #61615F;
+    height: 100px;
+}
+
+@media screen and (max-width: 320px) {
+
+    h2 {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    h4 {
+        font-size: 1em;
+    }
+}

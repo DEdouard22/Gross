@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
-// import Expense from './Expense.js';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import axios from 'axios'
+import axios from 'axios';
+import LoginNavbar from './LoginNavbar.js';
 
 class Expenses extends Component {
     constructor() {
@@ -15,11 +15,22 @@ class Expenses extends Component {
         this.handleChange = this.handleChange.bind(this);
     };
 
+    updateSingleTransaction(singleTransaction) {
+        const state = {...this.state};
+        for (let i in state.expenses) {
+            if (state.expenses[i].id === singleTransaction.id) {
+                state.expenses[i] = singleTransaction;
+            };
+        };
+        this.setState(state);
+    }
+
     handleChange(event) {
         let data = {};
         data[event.target.name] = event.target.value;
+
         this.setState({...data});
-        console.log(event.target.value);
+        // console.log(event.target.value);
     };
 
     addExpense = (event) => {
@@ -28,7 +39,7 @@ class Expenses extends Component {
         // this.setState({ expenses: [...this.state.expenses, expenseToBeAdded ]});
         axios.post('/api/expenses', expenseToBeAdded)
         .then(res => this.setState( prevState => ({
-            expenses: prevState.expenses.concat(res.data)
+            expenses: res.data
         })
         // .catch(error => (error))
         ))
@@ -48,15 +59,19 @@ class Expenses extends Component {
     render() {
 
         let expensesJSX = this.state.expenses.map((expense, index) => {
-            return <ExpenseItem key={index} {...expense} />}
+            return <ExpenseItem updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
         );
 
         return (
-            <div>
+            <div className="Expenses">
+                <header className="container">
+                    <LoginNavbar />
+                </header>
+                <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button>
                 <Form onSubmit={ this.addExpense.bind(this) }>
                     <FormGroup row>
                         <Label for="enterExpense" sm={2}>
-                            Enter Expense
+                            Description
                         </Label>
                         <Col sm={10}>
                             <Input
@@ -70,7 +85,7 @@ class Expenses extends Component {
                     </FormGroup>
                     <FormGroup row>
                         <Label for="incomeDebt" sm={2}>
-                            Credit or Debit
+                            Income or Debt
                         </Label>
                         <Col sm={10}>
                             <Input
@@ -86,9 +101,10 @@ class Expenses extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="enterAmount" sm={2}>Enter Amount</Label>
+                        <Label for="enterAmount" sm={2}>Amount</Label>
                         <Col sm={10}>
                             <Input
+                                required
                                 type="expenseAmount"
                                 onChange={this.handleChange}
                                 value={this.state.amount}
@@ -101,6 +117,7 @@ class Expenses extends Component {
                         <Label for="enterFrequency" sm={2}>Frequency</Label>
                         <Col sm={10}>
                             <Input
+                                required
                                 type="select"
                                 value={this.state.frequency}
                                 onChange={this.handleChange}

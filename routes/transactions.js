@@ -31,4 +31,26 @@ router.post('/', function(req, res) {
     })
 })
 
+router.put('/:id', ( req, res, next ) => {
+    models.Transaction.findById (req.params.id)
+    .then(transactions => {
+        transactions.update(req.body)
+        .then((transaction) => {
+            res.json(transactions);
+        })
+        .catch(next)
+    })
+})
+
+router.get('/delete/:id', function( req, res, next) {
+    const id = req.params.id;
+    models.Transaction.destroy({
+        where: {
+            id: id}
+    })
+    .then(transactions => {
+        res.redirect('/api/expenses');
+    })
+})
+
 module.exports = router;
