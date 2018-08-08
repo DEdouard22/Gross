@@ -4,12 +4,16 @@ import { Container, Row, Col} from 'reactstrap';
 import { PaginationLink } from 'reactstrap';
 import './Calendar.css'
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import axios from 'axios';
 
 class Calendar extends Component {
     constructor(){
         super();
         this.state = {
-            currentMonth: new Date()
+            currentMonth: new Date(), 
+            calendarData: {
+                Transactions: [],
+            }
         }
     }
 
@@ -51,19 +55,16 @@ class Calendar extends Component {
                     <Row className="days">{days}</Row>
                 </Container>
         )
-      }
+      };
     
     renderCardRow() {
+        const { calendarData } = this.state
         const { currentMonth } = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
         const startWkDate = dateFns.startOfWeek(monthStart);
         const endWkDate = dateFns.endOfWeek(monthEnd);
         const rows = [];
-        // let days = [];
-        // let day = startWkDate;
-        // let dayOfMonth = 0;
-        // const monthEndDay = dateFns.getDate(monthEnd);
         console.log(dateFns.getDate(endWkDate));
         const totalDaysView = dateFns.differenceInDays(endWkDate, startWkDate )
         console.log(totalDaysView);
@@ -74,25 +75,43 @@ class Calendar extends Component {
         let numrows = 3;
         //Change dummyListExp with a call to the list of transactions filtered for the given day
         for (var i = 0; i < numrows; i++) {
-            dummyListExp.push(<ListGroupItem key={i} />);
+            //console.log(this.state);
+            dummyListExp.push(<ListGroupItem key={i}></ListGroupItem>);
         }
 
         let rowIndex = 0;
         while(daysInView.length > 0) {
+            
             const currentrow = daysInView.splice(0, 7);
             rows[rowIndex] = [];
-            // console.log(currentrow);
+            let transations = this.state.calendarData.Transactions;
+            
             currentrow.map((dayInRow, index) => {
                 let dayActive = true;
                 if (!dateFns.isSameMonth(dayInRow, currentMonth)){
                     dayActive=false;
                 }
-                rows[rowIndex].push(
-                    <ListGroup className={dayActive ? 'col col-center currentmonth' : 'col col-center othermonth'}>
+                let currentTransactions = [];
+                
+                transations.forEach(function(transaction){
+                    if (dateFns.getDate(dayInRow) == dateFns.getDate(transaction.startDate)) {
+                        currentTransactions.push({
+                            currentDay: dateFns.getDate(dayInRow),
+                            transactionDay: dateFns.getDate(transaction.startDate),
+                            description: transaction.description,
+                        })
+                    };
+                });
+
+                console.log(currentTransactions);
+                
+                return rows[rowIndex].push(
+                    <ListGroup className={dayActive ? 'dayGroup col col-center currentmonth' : 'dayGroup col col-center othermonth'}>
                         <ListGroupItem className="viewDay" key={index}>{dateFns.getDate(dayInRow)}</ListGroupItem>
-                        {dummyListExp}
+                        { currentTransactions.map((transaction => <ListGroupItem>{transaction.description}</ListGroupItem>))}
                     </ListGroup>
                 )
+            
             });
             rowIndex++;
         }
@@ -129,8 +148,16 @@ class Calendar extends Component {
     });
     };
 
+    componentDidMount() {
+        console.log(this.props);
+        axios.get(`/api/calendar/${this.props.match.params.id}`)
+        .then(({data}) => {
+            this.setState({calendarData: data})
+            // console.log(data);
+        });
+    };
+
     render() {
-        
         return (
             <div className="calendar">
                 {this.renderHeader()}

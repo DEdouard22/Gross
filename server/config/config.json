@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "davidedouard",
+    "username": "gabrieledouard",
     "password": null,
-    "database": "gros",
+    "database": "gross",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

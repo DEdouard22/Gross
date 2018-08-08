@@ -4,33 +4,41 @@ import MediaQuery from 'react-responsive';
 import './App.css';
 import Expenses from './Expenses.js';
 import { Link, Route, Switch } from 'react-router-dom';
+import UserAccount from './UserAccount.js';
 import Calendar from './Calendar';
 import Home from './Home.js';
 import Login from './login.js';
-
-
-
+import GrossNavbar from './GrossNavbar.js'
 
 class App extends Component {
+state = {
+  user: {
+    id: 1,
+  }
+}    
 
-  render() {  
-    return (
-      
-        <div className="App"> 
+render() {
+  return (
+
+        <div className="App">
           <div className="row">
             <div className="col-12">
-          </div> 
+          </div>
         </div>
-
+        {/* < Auth /> */}
+          <GrossNavbar />
           <Switch>
-              <Route path="/expenses" component={Expenses} /> 
-              <Route path="/calendar" component={Calendar} /> 
+              <Route path="/expenses" component={Expenses} />
+              <Route path="/calendar/:id" component={Calendar} />
+              <Route path="/user" component={UserAccount} />
               <Route path="/login" component={Login} />
               <Route path="/" component={Home} />
           </Switch>         
-        </div> 
+        </div>
+
+  
     );
-    
+
   }
 }
 

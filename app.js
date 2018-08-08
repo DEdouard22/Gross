@@ -13,8 +13,19 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var transactionsRouter = require('./routes/transactions');
+var calendarRouter = require('./routes/calendar');
 
 var app = express();
+
+app.all('*', (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
+  
+  next();
+
+})
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -26,6 +37,22 @@ var corsOption = {
   exposedHeaders: ['x-auth-token', 'authorization']
 };
 // app.use(cors(corsOption));
+<<<<<<< HEAD
+
+// Make sure all request return CORS headers
+app.use(function (req, res, next) {
+    var origin = req.get('origin');
+    if (!origin || origin === 'undefined' || origin.length == 0) {
+        origin = req.get('host');
+    }
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, authorization, token');
+
+    next();
+});
+=======
+>>>>>>> db68d95f619852a9d236babec0aaf2f6093c96e5
 
 // Make sure all request return CORS headers
 app.use(function (req, res, next) {
@@ -40,7 +67,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -52,6 +78,7 @@ setupAuth(app);
 app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/expenses', transactionsRouter);
+app.use('/api/calendar', calendarRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

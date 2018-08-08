@@ -45,7 +45,8 @@ router.put('/:id', ( req, res, next ) => {
 router.get('/delete/:id', function( req, res, next) {
     const id = req.params.id;
     models.Transaction.destroy({
-        where: {id: id}
+        where: {
+            id: id}
     })
     .then(transactions => {
         res.redirect('/api/expenses');
