@@ -11,14 +11,18 @@ import Login from './login.js';
 import GrossNavbar from './GrossNavbar.js'
 
 class App extends Component {
+state = {
+  user: {
+    id: 1,
+  }
+}    
 
-  render() {
-    return (
+render() {
+  return (
 
         <div className="App">
           <div className="row">
             <div className="col-12">
-
           </div>
         </div>
         {/* < Auth /> */}
@@ -26,7 +30,7 @@ class App extends Component {
           <Switch>
               <Route path="/home" component={Home} />
               <Route path="/expenses" component={Expenses} />
-              <Route path="/calendar" component={Calendar} />
+              <Route path="/calendar/:id" component={Calendar} />
               <Route path="/login" component={Login} />
               <Route path="/user" component={UserAccount} />
           </Switch>         
