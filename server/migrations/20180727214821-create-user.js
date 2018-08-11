@@ -20,7 +20,7 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      githubId: {
+      googleId: {
         type: Sequelize.STRING
       },
       facebookId: {
