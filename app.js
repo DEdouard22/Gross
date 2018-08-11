@@ -37,7 +37,6 @@ var corsOption = {
   exposedHeaders: ['x-auth-token', 'authorization']
 };
 // app.use(cors(corsOption));
-<<<<<<< HEAD
 
 // Make sure all request return CORS headers
 app.use(function (req, res, next) {
@@ -51,8 +50,6 @@ app.use(function (req, res, next) {
 
     next();
 });
-=======
->>>>>>> db68d95f619852a9d236babec0aaf2f6093c96e5
 
 // Make sure all request return CORS headers
 app.use(function (req, res, next) {
