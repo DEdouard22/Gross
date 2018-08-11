@@ -28,11 +28,11 @@ render() {
         {/* < Auth /> */}
           <GrossNavbar />
           <Switch>
-              <Route path="/home" component={Home} />
               <Route path="/expenses" component={Expenses} />
-              <Route path="/calendar/:id" component={Calendar} />
-              <Route path="/login" component={Login} />
+              <Route path="/calendar" component={Calendar} />
               <Route path="/user" component={UserAccount} />
+              <Route path="/login" component={Login} />
+              <Route path="/" component={Home} />
           </Switch>         
         </div>
 

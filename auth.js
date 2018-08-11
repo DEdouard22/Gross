@@ -2,9 +2,7 @@ const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
-
 const LocalStrategy = require('passport-local').Strategy;
-// const GitHubStrategy = require('passport-github').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -18,28 +16,6 @@ const setupAuth = (app) => {
         resave: true,
         saveUninitialized: true,
     }));
-    
-    // add the github strategy
-    // passport.use(new GitHubStrategy({
-    //     clientID: process.env.GITHUB_ID,
-    //     clientSecret: process.env.GITHUB_SECRET,
-    //     callbackURL: "http://localhost:3001/auth/github/login"
-    // }, (accessToken, refreshToken, profile, done) => {
-    //     models.User.findOrCreate({
-    //         where: {
-    //             githubId: profile.id
-    //         },
-    //         defaults: {
-    //             username: profile.login,
-    //             githubId: profile.id,
-    //             email: profile.email,
-    //         }
-    //     })
-    //     .then(result => {
-    //         return done(null, result[0]);
-    //     })
-    //     .catch(done);
-    // }));
     
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
@@ -140,7 +116,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.g
 app.get('/auth/google/callback', 
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
-    res.redirect('/');
+    res.redirect('http://localhost:3000/calendar');
 });
 
 // Redirect the user to Facebook for authentication.  When complete,
