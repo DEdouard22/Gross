@@ -16,7 +16,7 @@ class Calendar extends Component {
             }
         }
     }
-
+    
     renderHeader() {
         const dateFormat = "MMMM YYYY";
         
@@ -58,7 +58,6 @@ class Calendar extends Component {
       };
     
     renderCardRow() {
-        const { calendarData } = this.state
         const { currentMonth } = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
@@ -81,11 +80,13 @@ class Calendar extends Component {
 
         let rowIndex = 0;
         while(daysInView.length > 0) {
-            
+            // Days in view is the total number of days that will appear on the calendar month view. 
+            // the splice method pulls out the firs 7 days and returns a row that will be pushed into calendar.
             const currentrow = daysInView.splice(0, 7);
             rows[rowIndex] = [];
             let transations = this.state.calendarData.Transactions;
-            
+            // This section iterates over each day in that row and decides whether or not it is in the current month
+            // and sets the dayActive attribute accordingly. 
             currentrow.map((dayInRow, index) => {
                 let dayActive = true;
                 if (!dateFns.isSameMonth(dayInRow, currentMonth)){
@@ -102,9 +103,10 @@ class Calendar extends Component {
                         })
                     };
                 });
-
                 console.log(currentTransactions);
                 
+                // Need to do something here so that there are an even amout of 
+
                 return rows[rowIndex].push(
                     <ListGroup className={dayActive ? 'dayGroup col col-center currentmonth' : 'dayGroup col col-center othermonth'}>
                         <ListGroupItem className="viewDay" key={index}>{dateFns.getDate(dayInRow)}</ListGroupItem>
