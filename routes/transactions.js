@@ -4,16 +4,15 @@ const models = require('../server/models');
 
 /* GET expenses listing. */
 router.get('/', function(req, res, next) {
+    console.log(req.user.id)
     models.Transaction.findAll({
-        // where: {
-        //     UserId: 1
-        // },
-        // include: [a
-        //     models.User,
-        //     models.Paymentmethod
-        // ],
+        where: {
+            UserId: req.user.id
+        },
+        include: [
+            models.User
+        ],
     })
-
     .then(transactions => {
         res.send(transactions);
     })

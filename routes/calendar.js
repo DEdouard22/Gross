@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const models = require('../server/models');
 
-router.get('/:id', function(req, res, next) {
+router.get('/', function(req, res, next) {
     models.User.findById(req.params.id, {
         include: [
             models.Transaction
