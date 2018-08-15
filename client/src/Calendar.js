@@ -43,11 +43,11 @@ class Calendar extends Component {
         let startDate = dateFns.startOfWeek(this.state.currentMonth);
     
         for (let i = 0; i < 7; i++) {
-          days.push(
+        days.push(
             <div className="col col-center" key={i}>
-              {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
+            {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
             </div>
-          );
+        );
         }
 
         return (

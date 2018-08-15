@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
-import MediaQuery from 'react-responsive';
 import './App.css';
 import Expenses from './Expenses.js';
 import { Link, Route, Switch } from 'react-router-dom';
@@ -19,13 +18,12 @@ state = {
 
 render() {
   return (
-
-        <div className="App">
+    <div>
+        <div className="container">
           <div className="row">
             <div className="col-12">
           </div>
         </div>
-        {/* < Auth /> */}
           <GrossNavbar />
           <Switch>
               <Route path="/expenses" component={Expenses} />
@@ -35,8 +33,7 @@ render() {
               <Route path="/" component={Home} />
           </Switch>         
         </div>
-
-  
+  </div>
     );
 
   }
