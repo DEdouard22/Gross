@@ -22,7 +22,7 @@ app.all('*', (req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Credentials", true);
-  
+
   next();
 
 })
@@ -37,6 +37,7 @@ var corsOption = {
   exposedHeaders: ['x-auth-token', 'authorization']
 };
 // app.use(cors(corsOption));
+<<<<<<< HEAD
 
 // Make sure all request return CORS headers
 app.use(function (req, res, next) {
@@ -50,6 +51,8 @@ app.use(function (req, res, next) {
 
     next();
 });
+=======
+>>>>>>> master
 
 // Make sure all request return CORS headers
 app.use(function (req, res, next) {

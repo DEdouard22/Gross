@@ -10,13 +10,13 @@ const models = require('./server/models');
 
 const setupAuth = (app) => {
     app.use(cookieParser());
-    
+
     app.use(session({
         secret: 'secretserverword',
         resave: true,
         saveUninitialized: true,
     }));
-    
+
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -113,7 +113,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.g
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/auth/google/callback', 
+app.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
     console.log(req.user);
