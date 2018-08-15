@@ -116,6 +116,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.g
 app.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
+    console.log(req.user);
     res.redirect('http://localhost:3000/calendar');
 });
 

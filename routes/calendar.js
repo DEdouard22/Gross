@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 const models = require('../server/models');
 
-router.get('/:id', function(req, res, next) {
-    models.User.findById(req.params.id, {
+router.get('/', (req, res, next) => {    
+    console.log(req.user.id);
+    models.User.findById(req.user.id, {
         include: [
             models.Transaction
         ]
-    }). then (user => {
+    }).then(user => {
         res.send(user);
     });
 });
