@@ -11,11 +11,11 @@ import Login from './login.js';
 import GrossNavbar from './GrossNavbar.js'
 
 class App extends Component {
-state = {
-  user: {
-    id: 1,
-  }
-}    
+// state = {
+//   user: {
+//     id: 1,
+//   }
+// }    
 
 render() {
   return (

@@ -16,7 +16,7 @@ class Calendar extends Component {
             }
         }
     }
-    
+
     renderHeader() {
         const dateFormat = "MMMM YYYY";
         
@@ -82,9 +82,10 @@ class Calendar extends Component {
         while(daysInView.length > 0) {
             // Days in view is the total number of days that will appear on the calendar month view. 
             // the splice method pulls out the firs 7 days and returns a row that will be pushed into calendar.
-            const currentrow = daysInView.splice(0, 7);
+            var currentrow = daysInView.splice(0, 7);
             rows[rowIndex] = [];
-            let transations = this.state.calendarData.Transactions;
+            let transactions = this.state.calendarData.Transactions;
+            console.log(this.state);
             // This section iterates over each day in that row and decides whether or not it is in the current month
             // and sets the dayActive attribute accordingly. 
             currentrow.map((dayInRow, index) => {
@@ -93,24 +94,29 @@ class Calendar extends Component {
                     dayActive=false;
                 }
                 let currentTransactions = [];
-                
-                transations.forEach(function(transaction){
-                    if (dateFns.getDate(dayInRow) == dateFns.getDate(transaction.startDate)) {
+                transactions.forEach(function(transaction){
+                    //console.log(transaction);
+                    if (dateFns.getDate(dayInRow) == dateFns.getDate(transaction.scheduledDay)) {
+                        
                         currentTransactions.push({
                             currentDay: dateFns.getDate(dayInRow),
-                            transactionDay: dateFns.getDate(transaction.startDate),
+                            transactionDay: dateFns.getDate(transaction.scheduledDay),
                             description: transaction.description,
                         })
+                        console.log(currentTransactions);
+                        
+                        if (currentTransactions.length <= 2) {
+                        }
+
                     };
                 });
-                console.log(currentTransactions);
-                
-                // Need to do something here so that there are an even amout of 
+
+                // Need to do something here so that there are an even amout of rows. 
 
                 return rows[rowIndex].push(
                     <ListGroup className={dayActive ? 'dayGroup col col-center currentmonth' : 'dayGroup col col-center othermonth'}>
                         <ListGroupItem className="viewDay" key={index}>{dateFns.getDate(dayInRow)}</ListGroupItem>
-                        { currentTransactions.map((transaction => <ListGroupItem>{transaction.description}</ListGroupItem>))}
+                        { (currentTransactions.length <= 2) ? currentTransactions.map((transaction => <ListGroupItem>{transaction.description}</ListGroupItem>)) : '...'}
                     </ListGroup>
                 )
             
@@ -152,10 +158,10 @@ class Calendar extends Component {
 
     componentDidMount() {
         console.log(this.props);
-        axios.get(`/api/calendar/${this.props.match.params.id}`)
-        .then(({data}) => {
-            this.setState({calendarData: data})
-            // console.log(data);
+        axios.get(`/api/calendar`)
+        .then(data => {
+            this.setState({calendarData: data.data})
+            console.log(data);
         });
     };
 

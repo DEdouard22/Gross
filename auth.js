@@ -84,7 +84,7 @@ passport.use(new LocalStrategy({
 }));
 
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user)
 });
 
 passport.deserializeUser((userId, done) => {
@@ -116,6 +116,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.g
 app.get('/auth/google/callback', 
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
+    console.log(req.user);
     res.redirect('http://localhost:3000/calendar');
 });
 
