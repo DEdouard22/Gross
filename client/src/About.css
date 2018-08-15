@@ -1,12 +1,12 @@
 h2 {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-top: 60px;
+    margin-bottom: 100px;
     padding-top: .8em;
     text-transform: uppercase;
     letter-spacing: .2em;
     color: rgb(71, 66, 66);
-    font-size: 2em;
+    font-size: 3vw;
     font-family: 'Zilla Slab';
     font-weight: 20;
 }
@@ -15,7 +15,9 @@ h4 {
     display: flex;
     text-align: center;
     margin-top: 20px;
-    justify-content: center
+    margin-bottom: 60px;
+    justify-content: center;
+    font-size: 2vw;
 }
 
 .vl-about {

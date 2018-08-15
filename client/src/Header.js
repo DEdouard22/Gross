@@ -5,9 +5,8 @@ import GrossNavbar from './GrossNavbar';
 const Header = (props) => {
     return (
         <div>
-        <GrossNavbar />
-    <div className="wrapper">
-
+        <div className="container">
+        <div className="wrapper">
             <div className="row">
                 <div className="col-12" id="App-header">
                     <h1 className="App-title">Gross</h1>
@@ -22,11 +21,7 @@ const Header = (props) => {
                     </h3>
                 </div>
             </div>
-
-                {/* <div className="col-sm-12">
-                    <div className="Spacing"/>
-                </div> */}
-
+        </div>
         </div>
     </div>
     );

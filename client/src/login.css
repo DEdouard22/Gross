@@ -1,3 +1,7 @@
+container {
+    background-color: #1D1C1A;
+}
+
 body {
     font-family: 'Zilla Slab';
 }
@@ -11,38 +15,38 @@ h1 {
 	display: inline;
 	margin: 20px;
 }
-/* /* 
 
-.facebook button {
+.footer {
+    display: flex;
+    font-size: 1vw;
+    text-align: center;
+    color: gray;
+    text-transform: uppercase;
+    padding-top: 20px;
+}
+
+.login-title {
     display: flex;
     justify-content: center;
-    background-color: #485466a8;
-    /* margin: 100px 0px 20px 300px; */
-    /* padding-left: 30px;  */
-    /* height: 70px;
-    width: 300px;
-    border-radius: 25px; */
-
-
-
-
-/* .google button {
-    justify-content: right;
-    background-color: #485466a8;
-    margin: 100px 300px 20px 100px;
-    padding-left: 20px; 
-    height: 70px;
-    border-radius: 25px;
-}  */
-
-
-footer {
-    background-color: #484848;
-    margin: 70px 0px 0px 0px;
+    text-transform: uppercase;
     letter-spacing: .2em;
-    position: relative;
-    width: 100%;
-    color: #FFF;
-    text-align: center;
+    color: rgb(252, 252, 252);
+    text-shadow: 2px 2px #181f54;
+    font-size: 12vw;
+    font-family: 'Zilla Slab';
+    font-weight: 300;
+}
 
+#login-img {
+    background-color: #485466;
+    background-image: url('./header.jpeg');
+    background-image: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 5px solid black;
+    height: 400px;
+}
+
+#auth {
+    padding: 80px;
 }
