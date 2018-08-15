@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
             models.User
         ],
     })
-
     .then(transactions => {
         res.send(transactions);
     })
