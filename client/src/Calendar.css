@@ -11,7 +11,7 @@
     padding: 0px;
 }
 
-.viewDay {
+.viewDay.list-group-item {
     text-align: right;
     padding: 0px;
     line-height: 30px;
@@ -28,7 +28,15 @@
 .dayGroup {
     border-color: black;
     width: 100%;
-    min-height: 90px;
+    min-height: 126px;
     border: 1px solid gray;
+}
 
+.list-group-item {
+    border: 0px;
+    padding: 0px;
+    border-color: black;
+    border: 1px solid gray;
+    line-height: 30px;
+    text-align: center;
 }
