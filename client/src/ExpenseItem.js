@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import './ExpenseItem.css';
 import EditExpense from './EditExpense.js';
 import { Button } from 'reactstrap';
+import axios from 'axios';
 
 class ExpenseItem extends Component {
 
     // constructor() {
     //     super();
-    //     this.state = {};
-    // }
+    //     this.state = {
+    //         modal: false
+    //     };
 
     render () {
         return (
@@ -25,11 +27,15 @@ class ExpenseItem extends Component {
                 <div className="right">
                     <div>{this.props.incomeDebt}</div>
                     <div>{this.props.frequency}</div>
+                    <div>{this.props.scheduledDay}</div>
+                    <Button
+                        onClick={ () => this.props.deleteTransaction(this.props.id) }
+                        type="delete" buttonLabel="Delete">Delete
+                    </Button>
                 </div>
             </div>
         )
-    }
-}
+    };
+};
 
 export default ExpenseItem;
-

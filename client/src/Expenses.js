@@ -35,7 +35,7 @@ class Expenses extends Component {
 
     addExpense = (event) => {
         event.preventDefault();
-        var expenseToBeAdded = {description: this.state.description, amount: this.state.amount, incomeDebt: this.state.incomeDebt, frequency: this.state.frequency};
+        var expenseToBeAdded = {description: this.state.description, date: this.state.date, amount: this.state.amount, incomeDebt: this.state.incomeDebt, frequency: this.state.frequency};
         // this.setState({ expenses: [...this.state.expenses, expenseToBeAdded ]});
         axios.post('/api/expenses', expenseToBeAdded)
         .then(res => this.setState( prevState => ({
@@ -52,6 +52,17 @@ class Expenses extends Component {
         });
     };
 
+    deleteTransaction = (id) => {
+        axios.delete(`/api/expenses/${id}`)
+            .then(res => {
+                axios.get('/api/expenses')
+                    .then(({data}) => {
+                        console.log(data);
+                        this.setState({expenses:data})
+                    });
+            });
+        };
+
     shouldComponentUpdate() {
         return true;
     }
@@ -59,7 +70,8 @@ class Expenses extends Component {
     render() {
 
         let expensesJSX = this.state.expenses.map((expense, index) => {
-            return <ExpenseItem updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
+            console.log(this.deleteTransaction);
+            return <ExpenseItem deleteTransaction={this.deleteTransaction.bind(this)} updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
         );
 
         return (
@@ -79,8 +91,24 @@ class Expenses extends Component {
                                 type="expenseDescription"
                                 value={this.state.description}
                                 onChange={this.handleChange}
-                                name="description" id="expenseDescription"
+                                name="description"
+                                id="expenseDescription"
                                 placeholder="Enter name of the expense" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="enterDate" sm={2}>
+                            Date
+                        </Label>
+                        <Col sm={10}>
+                            <Input
+                                required
+                                type="date"
+                                name="date"
+                                value={this.state.date}
+                                onChange={this.handleChange}
+                                id="date"
+                                placeholder="date of transaction" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>

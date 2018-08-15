@@ -3,10 +3,10 @@ var router = express.Router();
 const models = require('../server/models');
 
 /* GET users listing. */
-router.get('/:id', function(req, res, next) {
-  console.log(req.params)
+router.get('/', function(req, res, next) {
+  console.log(req.user.id)
   models.User.findOne({
-      where: {id: req.params.id},
+      where: {id: req.user.id},
       include: [ models.Transaction ]
     })
       

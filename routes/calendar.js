@@ -2,12 +2,17 @@ var express = require('express');
 var router = express.Router();
 const models = require('../server/models');
 
+<<<<<<< HEAD
 router.get('/', function(req, res, next) {
+=======
+router.get('/', (req, res, next) => {    
+    console.log(req.user.id);
+>>>>>>> master
     models.User.findById(req.user.id, {
         include: [
             models.Transaction
         ]
-    }). then (user => {
+    }).then(user => {
         res.send(user);
     });
 });
