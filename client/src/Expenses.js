@@ -5,6 +5,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios';
 import LoginNavbar from './LoginNavbar.js';
+import AddExpense from './AddExpense.js';
 
 class Expenses extends Component {
     constructor() {
@@ -70,8 +71,7 @@ class Expenses extends Component {
     render() {
 
         let expensesJSX = this.state.expenses.map((expense, index) => {
-            console.log(this.deleteTransaction);
-            return <ExpenseItem deleteTransaction={this.deleteTransaction.bind(this)} updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
+            return <ExpenseItem addExpense={this.addExpense.bind(this)} deleteTransaction={this.deleteTransaction.bind(this)} updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
         );
 
         return (
@@ -80,7 +80,10 @@ class Expenses extends Component {
                     <LoginNavbar />
                 </header>
                 <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button>
-                <Form onSubmit={ this.addExpense.bind(this) }>
+                <Button
+                    type="add" ><AddExpense buttonLabel="Add Transaction" {...this.props} />
+                </Button>
+                {/* <Form onSubmit={ this.addExpense.bind(this) }>
                     <FormGroup row>
                         <Label for="enterExpense" sm={2}>
                             Description
@@ -160,7 +163,7 @@ class Expenses extends Component {
                         </Col>
                     </FormGroup>
                     <Button type="submit">Submit</Button>
-                </Form>
+                </Form> */}
                 {expensesJSX}
             </div>
         );
