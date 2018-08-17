@@ -37,7 +37,6 @@ class Expenses extends Component {
     addExpense = (event) => {
         event.preventDefault();
         var expenseToBeAdded = {description: this.state.description, date: this.state.date, amount: this.state.amount, incomeDebt: this.state.incomeDebt, frequency: this.state.frequency};
-        // this.setState({ expenses: [...this.state.expenses, expenseToBeAdded ]});
         axios.post('/api/expenses', expenseToBeAdded)
         .then(res => this.setState( prevState => ({
             expenses: res.data
