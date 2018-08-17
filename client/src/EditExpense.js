@@ -17,6 +17,7 @@ class EditExpense extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+
     handleChange(event) {
         // this.props.onChange(event.target.value);
         let data = {};

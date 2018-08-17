@@ -122,7 +122,7 @@ class AddExpense extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClosed={this.state.closeModal} onClick={ this.props.addExpense } type="submit">Save</Button>
+                        <Button onClick={()=>{ this.props.addExpense(); this.state.closeModal } } type="submit">Save</Button>
                         <Button onClick={ this.toggle }>Cancel</Button>
                     </ModalFooter>
                 </Modal>

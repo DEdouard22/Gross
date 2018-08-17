@@ -15,7 +15,7 @@ class App extends Component {
 //   user: {
 //     id: 1,
 //   }
-// }    
+// }
 
 render() {
   return (
@@ -26,17 +26,17 @@ render() {
           </div>
         </div>
         {/* < Auth /> */}
-          <GrossNavbar />
+          {/* <GrossNavbar /> */}
           <Switch>
               <Route path="/expenses" component={Expenses} />
               <Route path="/calendar" component={Calendar} />
               <Route path="/user" component={UserAccount} />
               <Route path="/login" component={Login} />
               <Route path="/" component={Home} />
-          </Switch>         
+          </Switch>
         </div>
 
-  
+
     );
 
   }

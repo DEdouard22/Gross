@@ -26,7 +26,7 @@ let content = !!this.state.isAuthenticated ?
             {this.state.user.email}
         </div>
         <div>
-            <button onClick={this.logout} 
+            <button onClick={this.logout}
             className="button">
                 Log out
             </button>
@@ -40,10 +40,10 @@ let content = !!this.state.isAuthenticated ?
             <div className="facebook">
                 <button><a href="http://localhost:3001/auth/facebook">Login with Facebook</a></button>
             </div>
-        </div> 
+        </div>
 
             <div className="col-1">
-        <div className="vl"></div> 
+        <div className="vl"></div>
         </div>
 
         <div className="col-6">

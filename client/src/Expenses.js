@@ -76,9 +76,9 @@ class Expenses extends Component {
 
         return (
             <div className="Expenses">
-                <header className="container">
+                {/* <header className="container">
                     <LoginNavbar />
-                </header>
+                </header> */}
                 <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button>
                 <Button
                     type="add" ><AddExpense buttonLabel="Add Transaction" {...this.props} />

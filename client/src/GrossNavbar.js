@@ -30,6 +30,10 @@ class GrossNavbar extends Component {
         isOpen: !this.state.isOpen
     });
     }
+
+    componentDidMount() {
+        console.log('auth')
+    }
     render() {
         return (
             <div>
@@ -67,10 +71,12 @@ class GrossNavbar extends Component {
                             <NavbarToggler onClick={this.toggle} />
                             <Collapse isOpen={this.state.isOpen} navbar>
                                 <Nav>
-
+                                    { !this.state.userLoggedIN ?
                                     <NavItem>
                                         <button><NavLink tag={ Link } to="/login" active>Log In</NavLink></button>
-                                    </NavItem>
+                                    </NavItem> :
+                                    null
+                                    }
                                 </Nav>
 
                                 <Nav>
