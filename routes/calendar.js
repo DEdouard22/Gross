@@ -14,3 +14,6 @@ router.get('/', (req, res, next) => {
 });
 
 module.exports = router;
+
+//req.user.id
+// if req.user.id doesn't exit, then

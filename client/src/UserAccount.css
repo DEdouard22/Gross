@@ -4,6 +4,16 @@ h1 {
 
 .jumbotron {
     margin: auto 5px;
+    padding: 5px;
+}
+
+.jumbotron h1 {
+    padding: 5px;
+    margin: 0;
+}
+
+.jumbotron h2 {
+    margin: 10px;
 }
 
 .goals {
@@ -29,4 +39,5 @@ h1 {
 
 h2 {
     padding: 5px;
+    margin-bottom: 10px;
 }

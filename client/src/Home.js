@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
 import Footer from './Footer.js';
 import Header from './Header.js';
 import About from './About.js';
@@ -9,13 +8,9 @@ class Home extends Component {
     render () {
         return (
         <div>
-            <header className="container">
-                <div className="col-12">
-                    <Header />
-                    <About />
-                    <Footer />
-                </div>
-            </header>
+            <Header />
+            <About />
+            <Footer />
         </div>
         );
     };

@@ -41,9 +41,9 @@ class UserAccount extends Component {
     }
 
     getUserData(){
-        const url = 'http://localhost:3001/api/users/';
+        const url = 'http://localhost:3000/api/users/';
 
-        axios.get(`${url}1`)
+        axios.get(`${url}`)
         .then(res => {
             this.setState({
                 firstName: res.data.firstName,
@@ -62,7 +62,6 @@ class UserAccount extends Component {
     render() {
         return(
             <div>
-                <GrossNavbar />
                 <Jumbotron className="jumbotron" fluid>
                     <Container fluid>
                         <h2>Welcome</h2>
@@ -89,7 +88,7 @@ class UserAccount extends Component {
                             <div className="expenseDescription">
                                 <ul>
                                     {this.state.transactions.map((transaction) => {
-                                        return <li>{transaction.description}</li>
+                                        return <li key={transaction.id}>{transaction.description} --- {transaction.amount}</li>
                                     })}
                                 </ul>
                             </div>
