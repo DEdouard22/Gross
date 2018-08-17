@@ -15,7 +15,7 @@ class App extends Component {
 //   user: {
 //     id: 1,
 //   }
-// }    
+// }
 
 render() {
   return (
@@ -33,8 +33,8 @@ render() {
               <Route path="/user" component={UserAccount} />
               <Route path="/login" component={Login} />
               <Route path="/" component={Home} />
-          </Switch>         
-        
+          </Switch>
+
   </div>
     );
   }

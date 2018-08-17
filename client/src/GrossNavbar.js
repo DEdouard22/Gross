@@ -30,6 +30,10 @@ class GrossNavbar extends Component {
         isOpen: !this.state.isOpen
     });
     }
+
+    componentDidMount() {
+        console.log('auth')
+    }
     render() {
         return (
             <div>
