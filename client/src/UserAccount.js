@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Progress, Row, Col, Collapse } from 'reactstrap';
+import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Progress, Row, Col, Collapse, Table } from 'reactstrap';
 import './UserAccount.css';
 import logo from './userIcon.png';
 import axios from 'axios';
@@ -20,6 +20,7 @@ class UserAccount extends Component {
 
         this.getUserData = this.getUserData.bind(this);
         this.imageClick = this.imageClick.bind(this);
+       
     }
 
     togglePayment() {
@@ -51,12 +52,37 @@ class UserAccount extends Component {
                 email: res.data.email,
                 transactions: res.data.Transactions
             })
-            console.log(res.data)
+            // console.log(res.data)
         })
     }
-
+    
     componentDidMount() {
         this.getUserData()
+    }
+
+    filterIncome() {
+        let transactions = this.state.transactions;
+        
+        let debt = [];
+        // console.log(transactions);
+        var result = transactions.map((transaction) => {
+            if(transaction.incomeDebt === "Income"){
+                // income.push({
+                //     description: transaction.description,
+                //     amount: transaction.amount
+                // })
+                
+                
+                return 
+                
+                <tr key={transaction.id}> 
+                    <td>{transaction.description}</td>
+                    <td>{transaction.amount}</td> 
+                </tr>    
+            
+            }
+        })
+        
     }
 
     render() {
@@ -86,11 +112,42 @@ class UserAccount extends Component {
                                 </DropdownToggle>
                             </div>
                             <div className="expenseDescription">
-                                <ul>
-                                    {this.state.transactions.map((transaction) => {
-                                        return <li key={transaction.id}>{transaction.description} --- {transaction.amount}</li>
-                                    })}
-                                </ul>
+                                <Row>
+                                    <Col xs="6">
+                                        <p>Debt</p>
+                                        <Table bordered>  
+                                            <thead>
+                                                <tr>
+                                                    <th>Expense</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {this.filterIncome()}
+                                                {/* {this.state.transactions.map((transaction) => {
+                                                    return (
+                                                        <tr key={transaction.id}> 
+                                                            <td>{transaction.description}</td>
+                                                            <td>{transaction.amount}</td> 
+                                                        </tr>
+                                                )})} */}
+                                            </tbody>
+                                        </Table>
+                                    </Col>
+                                    <Col xs="6">
+                                        <p>Income</p>
+                                        <Table bordered>  
+                                            <thead>
+                                                <tr>
+                                                    <th>Income</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                        </Table>
+                                    </Col>
+                                </Row>
+                                
                             </div>
                             <DropdownMenu>
                                 <div onClick={this.togglePayment}>Card option 1</div>
