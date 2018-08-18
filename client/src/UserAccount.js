@@ -61,18 +61,34 @@ class UserAccount extends Component {
     }
 
     filterDebt() {
-        let transactions = this.state.transactions;    
+        let transactions = this.state.transactions;  
         let result = transactions.map((transaction) => {
-            if(transaction.incomeDebt === "Debt"){    
-                return ( 
+            if(transaction.incomeDebt === "Debt"){  
+                return (     
                 <tr key={transaction.id}> 
                     <td>{transaction.description}</td>
                     <td>{transaction.amount}</td> 
-                </tr>
+                </tr>  
                 )   
             }
         })
         return result;
+    }
+
+    filterDebtSum(){
+        let debtSum = 0;
+        let transactions = this.state.transactions;  
+        transactions.forEach((transaction) => {
+            if(transaction.incomeDebt === "Debt"){   
+                debtSum = debtSum + transaction.amount;     
+            }
+        })
+        return (
+            <tr>
+                <td></td>
+                <td>{debtSum}</td>
+            </tr>
+        );
     }
 
     filterIncome() {
@@ -90,8 +106,20 @@ class UserAccount extends Component {
         return result;
     }
 
-    sumIncomeDebt() {
-
+    filterIncomeSum() {
+        let incomeSum = 0;
+        let transactions = this.state.transactions;  
+        transactions.forEach((transaction) => {
+            if(transaction.incomeDebt === "Income"){   
+                incomeSum = incomeSum + transaction.amount;     
+            }
+        })
+        return (
+            <tr>
+                <td></td>
+                <td>{incomeSum}</td>
+            </tr>
+        );
     }
 
     render() {
@@ -123,7 +151,7 @@ class UserAccount extends Component {
                             <div className="expenseDescription">
                                 <Row>
                                     <Col xs="6">
-                                        <p>Debt</p>
+                                        <p className="tableTitle">Debt</p>
                                         <Table bordered>  
                                             <thead>
                                                 <tr>
@@ -133,11 +161,12 @@ class UserAccount extends Component {
                                             </thead>
                                             <tbody>
                                                 {this.filterDebt()}
+                                                {this.filterDebtSum()}
                                             </tbody>
                                         </Table>
                                     </Col>
                                     <Col xs="6">
-                                        <p>Income</p>
+                                        <p className="tableTitle">Income</p>
                                         <Table bordered>  
                                             <thead>
                                                 <tr>
@@ -147,6 +176,7 @@ class UserAccount extends Component {
                                             </thead>
                                             <tbody>
                                                 {this.filterIncome()}
+                                                {this.filterIncomeSum()}
                                             </tbody>
                                             
                                         </Table>
@@ -160,7 +190,8 @@ class UserAccount extends Component {
                             </DropdownMenu>
                         </Dropdown>    
                         <div className="goals text-left">Saving Goals
-                            <Progress animated color="success" value="25"/>
+                        {/* add function to take savings goal and a percentage the user wants to save of their income sum and change value attribute to {transaction."percentage"} */}
+                            <Progress animated color="success" value="25"/>  
                         </div>
                     </div>
                 </Collapse>
