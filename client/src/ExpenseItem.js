@@ -15,8 +15,8 @@ class ExpenseItem extends Component {
             <div className="ExpenseItem">
                 <div className="left">
                     <b>{'Expense: '} {this.props.description}</b>
-                    <div>{' Amount $'}{ this.props.amount}</div>
-                    <div>{'Recurring?'} {this.props.recurring}</div>
+                    <div>{' Amount: $'}{ this.props.amount}</div>
+                    <div>{'Recurring?'}{this.props.recurring}</div>
                     <Button
                         // onClick={ this.editTransaction.bind(this) }
                         type="edit" ><EditExpense updateSingleTransaction={this.props.updateSingleTransaction} buttonLabel="Edit" {...this.props} />
@@ -24,15 +24,14 @@ class ExpenseItem extends Component {
 
                 </div>
                 <div className="right">
-                    <div>{'Effective Date: '} {this.props.scheduledDay}</div>
                     <div>{this.props.incomeDebt}</div>
-                    <div>{'Frequency: '} {this.props.frequency}</div>
+                    <div>{'Frequency: '}{this.props.frequency}</div>
                     <Moment format="MM/DD/YYYY">
-                        {this.props.scheduledDay}
+                        {'Effective Date: '}{this.props.scheduledDay}
                     </Moment>
                     <br />
                     <Moment format="MM/DD/YYYY">
-                        {this.props.endDate}
+                        {'End Date: '}{this.props.endDate}
                     </Moment>
                     <br />
                     <Button
