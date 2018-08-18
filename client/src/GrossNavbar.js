@@ -80,7 +80,7 @@ class GrossNavbar extends Component {
                                         </NavItem>
                                     </Nav>
                                     </Collapse>
-                                    <img class="navbar-brand" src="grosslogo.png"/>
+                                    <img className="navbar-brand" src="grosslogo.png"/>
                             </Navbar>
                         </div>
                     </div>
