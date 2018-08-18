@@ -28,6 +28,8 @@ const setupAuth = (app) => {
                 googleId: profile.id
             },
             defaults: {
+                firstName: profile.name.givenName, // added lines 32 -33 to populate user's firstName and lastName
+                lastName: profile.name.familyName,
                 username: profile.login,
                 googleId: profile.id,
                 email: profile.email,
