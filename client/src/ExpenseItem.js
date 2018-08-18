@@ -3,21 +3,20 @@ import './ExpenseItem.css';
 import EditExpense from './EditExpense.js';
 import { Button } from 'reactstrap';
 import axios from 'axios';
+import Moment from 'react-moment';
+import 'moment-timezone';
+import moment from 'moment';
 
 class ExpenseItem extends Component {
 
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         modal: false
-    //     };
-
     render () {
+
         return (
             <div className="ExpenseItem">
                 <div className="left">
-                    <b>{this.props.description}</b>
-                    <div>{this.props.amount}</div>
+                    <b>{'Expense: '} {this.props.description}</b>
+                    <div>{' Amount $'}{ this.props.amount}</div>
+                    <div>{'Recurring?'} {this.props.recurring}</div>
                     <Button
                         // onClick={ this.editTransaction.bind(this) }
                         type="edit" ><EditExpense updateSingleTransaction={this.props.updateSingleTransaction} buttonLabel="Edit" {...this.props} />
@@ -25,9 +24,17 @@ class ExpenseItem extends Component {
 
                 </div>
                 <div className="right">
+                    <div>{'Effective Date: '} {this.props.scheduledDay}</div>
                     <div>{this.props.incomeDebt}</div>
-                    <div>{this.props.frequency}</div>
-                    <div>{this.props.scheduledDay}</div>
+                    <div>{'Frequency: '} {this.props.frequency}</div>
+                    <Moment format="MM/DD/YYYY">
+                        {this.props.scheduledDay}
+                    </Moment>
+                    <br />
+                    <Moment format="MM/DD/YYYY">
+                        {this.props.endDate}
+                    </Moment>
+                    <br />
                     <Button
                         onClick={ () => this.props.deleteTransaction(this.props.id) }
                         type="delete" buttonLabel="Delete">Delete
