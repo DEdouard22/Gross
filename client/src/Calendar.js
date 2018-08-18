@@ -102,7 +102,7 @@ class Calendar extends Component {
                         console.log(transaction.startDate);
                         console.log(transaction.endDate);
                         // if ( (dateFns.isAfter(dayInRow, transaction.startDate))  && (dateFns.isBefore(dayInRow, transaction.endDate)) ) {
-                            if (transaction.incomeDebt == "debt") {
+                            if (transaction.incomeDebt == "Debt") {
                                 console.log(transaction.description + " is a debt");
                                 currentDebts.push({
                                     currentDay: dateFns.getDate(dayInRow),
@@ -156,7 +156,7 @@ class Calendar extends Component {
                         <ListGroup className={(!dayActive) ? 'dayGroup col col-center othermonth' : currDay ? 'dayCurr col col-center currentmonth' :'dayGroup col col-center currentmonth'}>
                             <ListGroupItem className="viewDay" key={index}><CalendarModal dayInRow={dateFns.getDate(dayInRow)} currentDebts={currentDebts} currentIncomes={currentIncomes} className='dayModel' buttonLabel={dateFns.getDate(dayInRow)}  /></ListGroupItem>
                             { (currentIncomes.length < 1) ? <ListGroupItem>{"__"}</ListGroupItem> : (currentIncomes.length < 2) ? currentIncomes.map((transaction => <ListGroupItem className="IncomeListItem" key={index}>{transaction.description}</ListGroupItem>)) : <ListGroupItem className="IncomeListItem" key={index}>{'Incomes'}</ListGroupItem> }
-                            { (currentIncomes.length < 1) || (!NaN) ? <ListGroupItem>{"__"}</ListGroupItem>: (currentDebts.length < 2) ? currentDebts.map((transaction => <ListGroupItem className="DebtListItem" key={index}>{transaction.description}</ListGroupItem>)) : <ListGroupItem className="DebtListItem" key={index}>{'Expenses'}</ListGroupItem> }
+                            { (currentDebts.length < 1) ? <ListGroupItem>{"__"}</ListGroupItem>: (currentDebts.length < 2) ? currentDebts.map((transaction => <ListGroupItem className="DebtListItem" key={index}>{transaction.description}</ListGroupItem>)) : <ListGroupItem className="DebtListItem" key={index}>{'Expenses'}</ListGroupItem> }
                             { (currentDaySum < 0) ? <ListGroupItem>{currentDaySum}</ListGroupItem> : <ListGroupItem>{currentDaySum}</ListGroupItem>}
                         </ListGroup>
                     </div>
