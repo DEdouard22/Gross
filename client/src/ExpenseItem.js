@@ -27,7 +27,7 @@ class ExpenseItem extends Component {
                     <div>{this.props.incomeDebt}</div>
                     <div>{'Frequency: '}{this.props.frequency}</div>
                     <Moment format="MM/DD/YYYY">
-                        {'Effective Date: '}{this.props.scheduledDay}
+                        Effective Date: {this.props.scheduledDay}
                     </Moment>
                     <br />
                     <Moment format="MM/DD/YYYY">
