@@ -6,6 +6,7 @@ import './Calendar.css'
 import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 import axios from 'axios';
 import { Link, Route, Switch } from 'react-router-dom';
+import CalendarNavbar from "./CalendarNavbar.js";
 
 class Calendar extends Component {
     constructor(){
@@ -23,6 +24,7 @@ class Calendar extends Component {
 
         return (
         <Container>
+            < CalendarNavbar />
             <Row className="header">
                 <Col xs="2">
                     <PaginationLink previous href="#" onClick={this.prevMonth}/>

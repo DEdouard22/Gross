@@ -4,7 +4,7 @@ import ExpenseItem from './ExpenseItem';
 import { Link, Route, Switch } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios';
-import LoginNavbar from './LoginNavbar.js';
+import ExpensesNavbar from './ExpensesNavbar.js';
 import AddExpense from './AddExpense.js';
 
 class Expenses extends Component {
@@ -74,9 +74,9 @@ class Expenses extends Component {
 
         return (
             <div className="Expenses">
-                {/* <header className="container">
-                    <LoginNavbar />
-                </header> */}
+                <header className="container">
+                    <ExpensesNavbar /> 
+                </header>
                 <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button>
                 <Button
                     type="add" ><AddExpense addExpense={this.addExpense.bind(this)} buttonLabel="Add Transaction" {...this.props} />

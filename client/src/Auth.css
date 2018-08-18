@@ -49,7 +49,6 @@ h1 {
     max-width: 100%;
     font-size: 2.5vw;
     font-family: 'Zilla Slab';
-    padding-right: 35px;
 }
 
 .google button a {
@@ -60,4 +59,13 @@ h1 {
 .google button:hover {
 	background-color: #6b82c7;
 	color: #FFF;
+}
+
+
+.logout-button {
+    height: 100px;
+    background-color: #485466a8;
+    max-width: 100%;
+    font-size: 2.5vw;
+    font-family: 'Zilla Slab';
 }
