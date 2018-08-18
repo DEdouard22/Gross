@@ -34,11 +34,9 @@ class Expenses extends Component {
         // console.log(event.target.value);
     };
 
-    addExpense = (event) => {
-        event.preventDefault();
-        var expenseToBeAdded = {description: this.state.description, date: this.state.date, amount: this.state.amount, incomeDebt: this.state.incomeDebt, frequency: this.state.frequency};
-        // this.setState({ expenses: [...this.state.expenses, expenseToBeAdded ]});
-        axios.post('/api/expenses', expenseToBeAdded)
+    addExpense = (expenseData) => {
+        console.log(expenseData);
+        axios.post('/api/expenses', expenseData)
         .then(res => this.setState( prevState => ({
             expenses: res.data
         })
@@ -71,7 +69,7 @@ class Expenses extends Component {
     render() {
 
         let expensesJSX = this.state.expenses.map((expense, index) => {
-            return <ExpenseItem addExpense={this.addExpense.bind(this)} deleteTransaction={this.deleteTransaction.bind(this)} updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
+            return <ExpenseItem deleteTransaction={this.deleteTransaction.bind(this)} updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
         );
 
         return (
@@ -81,7 +79,7 @@ class Expenses extends Component {
                 </header> */}
                 <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button>
                 <Button
-                    type="add" ><AddExpense buttonLabel="Add Transaction" {...this.props} />
+                    type="add" ><AddExpense addExpense={this.addExpense.bind(this)} buttonLabel="Add Transaction" {...this.props} />
                 </Button>
                 {/* <Form onSubmit={ this.addExpense.bind(this) }>
                     <FormGroup row>

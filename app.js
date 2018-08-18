@@ -58,11 +58,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 setupAuth(app);
-
+console.log("before")
 app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/expenses', transactionsRouter);
 app.use('/api/calendar', calendarRouter);
+console.log("after")
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

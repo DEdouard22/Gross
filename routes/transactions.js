@@ -4,7 +4,6 @@ const models = require('../server/models');
 
 /* GET expenses listing. */
 router.get('/', function(req, res, next) {
-    console.log(req.user.id)
     models.Transaction.findAll({
         where: {
             UserId: req.user.id
@@ -22,11 +21,12 @@ router.post('/', function(req, res) {
     console.log(req.user);
     models.Transaction.create({
         description: req.body.description,
-        scheduledDay: req.body.date,
+        scheduledDay: req.body.scheduledDay,
         amount: req.body.amount,
         frequency: req.body.frequency,
         incomeDebt: req.body.incomeDebt,
-        UserId: req.user.id
+        UserId: req.user.id,
+        recurring: req.body.recurring
     })
     .then(transactions => {
         res.redirect('/api/expenses');
@@ -34,6 +34,7 @@ router.post('/', function(req, res) {
 })
 
 router.put('/:id', ( req, res, next ) => {
+    console.log(req);
     models.Transaction.findById (req.params.id)
     .then(transactions => {
         transactions.update(req.body)

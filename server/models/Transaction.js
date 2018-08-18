@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Transaction = sequelize.define('Transaction', {
     description: DataTypes.STRING,
-    amount: DataTypes.INTEGER,
+    amount: DataTypes.DECIMAL(12,2),
     frequency: DataTypes.STRING,
     autoPay: DataTypes.BOOLEAN,
     scheduledDay: DataTypes.DATE,
@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
     incomeDebt: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    recurring: DataTypes.BOOLEAN,
+    savedAmount: DataTypes.DECIMAL(12,2)
   }, {});
   Transaction.associate = function(models) {
     Transaction.belongsTo(models.User);
