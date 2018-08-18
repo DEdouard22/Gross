@@ -21,7 +21,7 @@ h1 {
 .facebook button {
     height: 100px;
     background-color: #485466a8;
-    width: 300px;
+    max-width: 100%;
     font-size: 2.5vw;
     font-family: 'Zilla Slab';
 }
@@ -40,14 +40,16 @@ h1 {
     border-bottom: 3px solid #61615F;
     padding-top: 15px;
     height: 1px;
-    width: 300px
+    max-width: 100%;
 }
 
 .google button {
     height: 100px;
     background-color: #485466a8;
-    width: 300px;
+    max-width: 100%;
     font-size: 2.5vw;
+    font-family: 'Zilla Slab';
+    padding-right: 35px;
 }
 
 .google button a {

@@ -1,14 +1,20 @@
 container {
     background-color: #1D1C1A;
+    font-family: 'Zilla Slab';
 }
 
 body {
     font-family: 'Zilla Slab';
 }
 
+#log-title h1 {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
 h1 {
 	text-align: center;
-	
 }
 
 .nav-item {
@@ -25,19 +31,20 @@ h1 {
     padding-top: 20px;
 }
 
-.login-title {
+h1.login-title {
     display: flex;
-    justify-content: center;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: .2em;
     color: rgb(252, 252, 252);
     text-shadow: 2px 2px #181f54;
-    font-size: 12vw;
+    font-size: 7.5vw;
     font-family: 'Zilla Slab';
     font-weight: 300;
 }
 
 #login-img {
+    display: flex;
     background-color: #485466;
     background-image: url('./header.jpeg');
     background-image: no-repeat;

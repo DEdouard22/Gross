@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
-import './EditExpense.css';
+import './AddExpense.css';
 import ExpenseItem from './ExpenseItem.js';
 
-class EditExpense extends Component {
+class AddExpense extends Component {
 
     constructor() {
         super();
         this.state = {
-            modal: false
+            modal: false,
         };
 
         this.toggle = this.toggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-
 
     handleChange(event) {
         // this.props.onChange(event.target.value);
@@ -34,55 +33,52 @@ class EditExpense extends Component {
         });
     }
 
-    editExpense = (event) => {
-        // console.log(event);
-        event.preventDefault();
-        var expenseToBeEdited = {
-            description: this.state.description,
-            amount: this.state.amount,
-            incomeDebt: this.state.incomeDebt,
-            frequency: this.state.frequency
-        }
-        axios.put(`/api/expenses/${this.props.id}`, expenseToBeEdited)
-        .then((res) => {
-            this.setState({expenses:res.data});
-            this.props.updateSingleTransaction(res.data);
-        });
-        this.closeModal();
-    };
+    // addExpense = (event) => {
+    //     // console.log(event);
+    //     event.preventDefault();
+    //     var expenseToBeAdded = {description: this.props.description, date: this.props.date, amount: this.props.amount, incomeDebt: this.props.incomeDebt, frequency: this.props.frequency};
+
+    //     axios.post('/api/expenses', expenseToBeAdded)
+    //     .then(res => this.setprops( prevState => ({
+    //         expenses: res.data
+    //     })
+    //     // .catch(error => (error))
+    //     ))
+    //     this.closeModal();
+    // };
 
     closeModal = () => {
         this.setState( {modal: false })
     }
 
-    componentDidMount() {
-        axios.get('/api/expenses')
-        .then(({data}) => {
-            this.setState({expenses:data})
-        });
-    };
+    // componentDidMount() {
+    //     axios.get('/api/expenses')
+    //     .then(({data}) => {
+    //         this.setState({expenses:data})
+    //     });
+    // };
 
-    shouldComponentUpdate() {
-        return true;
-    }
+    // shouldComponentUpdate() {
+    //     return true;
+    // }
 
     render () {
         return (
             <div>
-                <Button onClick={ this.toggle } className="EditExpense">{ this.props.buttonLabel }</Button>
+                <Button onClick={ this.toggle } className="AddExpense">{ this.props.buttonLabel }</Button>
                 <Modal
                     isOpen={ this.state.modal }
                     toggle={ this.toggle }
                     className={this.props.className}>
-                    <ModalHeader toggle={ this.toggle }>Edit Transaction</ModalHeader>
+                    <ModalHeader toggle={ this.toggle }>Add Transaction</ModalHeader>
                     <ModalBody className="modalBody">
-                        <Form onSubmit={ this.editExpense.bind(this) }>
+                        <Form onSubmit={ this.props.addExpense }>
                             <FormGroup>
                                 <Label >Description</Label>
                                 <Input
                                 required
                                 type="expenseDescription"
-                                defaultValue={this.props.description}
+                                // defaultValue={this.props.description}
                                 onChange={this.handleChange}
                                 name="description" id="expenseDescription" />
                             </FormGroup>
@@ -91,7 +87,7 @@ class EditExpense extends Component {
                                 <Input
                                     required
                                     type="select"
-                                    defaultValue={this.props.incomeDebt}
+                                    // defaultValue={this.props.incomeDebt}
                                     onChange={this.handleChange}
                                     name="incomeDebt" id="expenseIncomeDebt">
                                         <option>Income</option>
@@ -104,7 +100,7 @@ class EditExpense extends Component {
                                     required
                                     type="expenseAmount"
                                     onChange={this.handleChange}
-                                    defaultValue={this.props.amount}
+                                    // defaultValue={this.props.amount}
                                     name="amount"
                                     id="expenseAmount" />
                             </FormGroup>
@@ -113,7 +109,7 @@ class EditExpense extends Component {
                                 <Input
                                     required
                                     type="select"
-                                    defaultValue={this.props.frequency}
+                                    // defaultValue={this.props.frequency}
                                     onChange={this.handleChange}
                                     name="frequency"
                                     id="expenseFrequency">
@@ -126,7 +122,7 @@ class EditExpense extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={ this.editExpense.bind(this) } type="submit">Save</Button>
+                        <Button onClick={()=>{ this.props.addExpense(); this.state.closeModal } } type="submit">Save</Button>
                         <Button onClick={ this.toggle }>Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -135,4 +131,4 @@ class EditExpense extends Component {
     };
 };
 
-export default EditExpense;
+export default AddExpense;

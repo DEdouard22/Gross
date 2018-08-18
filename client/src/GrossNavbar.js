@@ -14,7 +14,7 @@ import {
     // DropdownItem
 } from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
-// import './GrossNavbar.css';
+import './GrossNavbar.css';
 
 class GrossNavbar extends Component {
     constructor(props) {
@@ -29,6 +29,10 @@ class GrossNavbar extends Component {
     this.setState({
         isOpen: !this.state.isOpen
     });
+    }
+
+    componentDidMount() {
+        console.log('auth')
     }
     render() {
         return (
@@ -59,31 +63,28 @@ class GrossNavbar extends Component {
                         </Nav>
                     </Collapse>
                 </Navbar> */}
-                <div className="row">
-                <div className="col-2"></div>
-
-                    <div className="col-8">
-                        <Navbar className="navbar-centered" expand='sm'>
-                            <NavbarToggler onClick={this.toggle} />
-                            <Collapse isOpen={this.state.isOpen} navbar>
-                                <Nav>
-
-                                    <NavItem>
-                                        <button><NavLink tag={ Link } to="/login" active>Log In</NavLink></button>
-                                    </NavItem>
-                                </Nav>
-
-                                <Nav>
-                                    <NavItem>
-                                    <button><NavLink tag={ Link } to="/about" active>About Gross</NavLink></button>
-                                    </NavItem>
-                                </Nav>
-
-                                </Collapse>
-                        </Navbar>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <Navbar className="navbar" expand='sm'>
+                                <NavbarToggler onClick={this.toggle} />
+                                <Collapse isOpen={this.state.isOpen} navbar>
+                                    <Nav>
+                                        <NavItem>
+                                            <a href="/login">Log In</a>
+                                        </NavItem>
+                                    </Nav>
+                                    <Nav>
+                                        <NavItem>
+                                        <NavLink tag={ Link } to="/about" active>About Gross</NavLink>
+                                        </NavItem>
+                                    </Nav>
+                                    </Collapse>
+                                    <img class="navbar-brand" src="grosslogo.png"/>
+                            </Navbar>
+                        </div>
                     </div>
-                    <div className="col-2"></div>
-            </div>
+                </div>
             </div>
         );
     }
