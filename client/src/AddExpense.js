@@ -11,6 +11,7 @@ class AddExpense extends Component {
         super();
         this.state = {
             modal: false,
+            checkboxState: false,
             expenses: []
         };
 
@@ -24,7 +25,6 @@ class AddExpense extends Component {
         data[event.target.name] = event.target.value;
 
         this.setState({...data});
-        // console.log(event.target.value);
     };
 
     toggle() {
@@ -34,10 +34,20 @@ class AddExpense extends Component {
         });
     }
 
+    // toggleCheckbox() {
+    //     this.setState({
+    //         checkboxState: !this.state.checkboxState
+    //     });
+    // }
+
     closeModal = () => {
         this.setState( {modal: false })
     }
 
+    updateLocal = (key, val) => {
+        this.setState({[key]: val || !this.state[key]})
+    }
+    // this.updateLocal('somekey', someVal)
     render () {
         return (
             <div>
@@ -66,16 +76,16 @@ class AddExpense extends Component {
                             </FormGroup>
                             <FormGroup row>
                                 <Label for="enterDate" sm={2}>
-                                    Date
+                                    Effective Date
                                 </Label>
                                 <Col sm={10}>
                                     <Input
                                         required
                                         type="date"
-                                        name="date"
-                                        value={this.state.date}
+                                        name="scheduledDay"
+                                        value={this.state.scheduledDay}
                                         onChange={this.handleChange}
-                                        id="date"
+                                        id="scheduledDay"
                                         placeholder="date of transaction" />
                                 </Col>
                             </FormGroup>
@@ -127,10 +137,48 @@ class AddExpense extends Component {
                                     </Input>
                                 </Col>
                             </FormGroup>
+                            <FormGroup row>
+                                <Label check for="enterRecurring" sm={2}>
+                                    Recurring Transaction?
+                                </Label>
+                                <Col sm={10}>
+                                    <Input
+                                        type="checkbox"
+                                        value={this.state.checkboxState}
+                                        onChange={this.handleChange}
+                                        name="recurring"
+                                        // onClick={this.toggleCheckbox.bind(this)}
+                                        id="recurring">
+                                    </Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="endDate" sm={2}>
+                                    End date of recurring transaction:
+                                </Label>
+                                <Col sm={10}>
+                                    <Input
+                                        type="date"
+                                        value={this.state.endDate}
+                                        onChange={this.handleChange}
+                                        name="endDate"
+                                        // onClick={this.toggleCheckbox.bind(this)}
+                                        id="endDate">
+                                    </Input>
+                                </Col>
+                            </FormGroup>
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={ () => {this.props.addExpense } } type="submit">Save</Button>
+                        <Button onClick={ () => {this.props.addExpense({
+                            description: this.state.description,
+                            scheduledDay: this.state.scheduledDay,
+                            amount: this.state.amount,
+                            incomeDebt: this.state.incomeDebt,
+                            frequency: this.state.frequency,
+                            recurring: this.state.recurring,
+                            endDate: this.state.endDate
+                            }); this.closeModal()} } type="submit">Save</Button>
                         <Button onClick={ this.toggle }>Cancel</Button>
                     </ModalFooter>
                 </Modal>
