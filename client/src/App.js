@@ -7,8 +7,9 @@ import UserAccount from './UserAccount.js';
 import Calendar from './Calendar';
 import Home from './Home.js';
 import Login from './login.js';
-import GrossNavbar from './GrossNavbar.js'
+import Footer from './Footer.js'
 import './grosslogo.png';
+import About from './About';
 
 class App extends Component {
 // state = {
@@ -23,7 +24,7 @@ render() {
         <div className="container">
           <div className="row">
         <div className="col-12">
-          <GrossNavbar />
+          {/* <GrossNavbar /> */}
           </div>
           </div>
           </div>
@@ -32,9 +33,10 @@ render() {
               <Route path="/calendar" component={Calendar} />
               <Route path="/user" component={UserAccount} />
               <Route path="/login" component={Login} />
+              <Route path="/about" component={About} />
               <Route path="/" component={Home} />
           </Switch>         
-        
+        < Footer />
   </div>
     );
   }

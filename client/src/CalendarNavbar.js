@@ -13,8 +13,7 @@ import logo from './gross3.png';
 
 
 
-
-class LoginNavbar extends Component {
+class CalendarNavbar extends Component {
     constructor(props) {
     super(props);
 
@@ -47,10 +46,16 @@ class LoginNavbar extends Component {
                                         <NavLink tag={ Link } to="/about" active>About Gross</NavLink>
                                         </NavItem>
                                     </Nav>
+                                    
                                     <Nav>
-                                        {/* <NavItem>
-                                            <a href="/expenses">Expenses</a>
-                                        </NavItem> */}
+                                        <NavItem>
+                                        <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
+                                        </NavItem>
+                                    </Nav>
+                                    <Nav>
+                                        <NavItem>
+                                        <NavLink tag={ Link } to="/user" active>My Profile</NavLink>
+                                        </NavItem>
                                     </Nav>
                                     </Collapse>
                                     <img src={ logo } />
@@ -63,4 +68,4 @@ class LoginNavbar extends Component {
     }
 }
 
-export default LoginNavbar;
+export default CalendarNavbar;

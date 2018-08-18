@@ -3,7 +3,7 @@ import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Progress,
 import './UserAccount.css';
 import logo from './userIcon.png';
 import axios from 'axios';
-import GrossNavbar from './GrossNavbar';
+import UserNavbar from './UserNavbar.js';
 
 class UserAccount extends Component {
     constructor(props) {
@@ -62,6 +62,8 @@ class UserAccount extends Component {
     render() {
         return(
             <div>
+                <div className="container">< UserNavbar /></div>
+
                 <Jumbotron className="jumbotron" fluid>
                     <Container fluid>
                         <h2>Welcome</h2>

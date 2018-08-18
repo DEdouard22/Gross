@@ -27,7 +27,7 @@ let content = !!this.state.isAuthenticated ?
         </div>
         <div>
             <button onClick={this.logout} 
-            className="button">
+            className="logout-button">
                 Log out
             </button>
         </div>
@@ -49,6 +49,7 @@ let content = !!this.state.isAuthenticated ?
             <div className="google">
                 <button><a href="http://localhost:3001/auth/google">Login with Google</a></button>
             </div>
+
         </div>
         </div>
         </div>

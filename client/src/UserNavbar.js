@@ -5,9 +5,13 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    NavLink, 
+    NavLink,
 } from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
+import "./GrossNavbar.css";
+import logo from './gross3.png';
+
+
 
 class UserNavbar extends Component {
     constructor(props) {
@@ -26,27 +30,35 @@ class UserNavbar extends Component {
     render() {
         return (
             <div>
-                <div className="row">
-                <div className="col-2"></div>
-                <div className="col-8">
-                <Navbar className="navbar-centered" light expand="lg">
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav>
-                            <NavItem>
-                                <button><NavLink tag={ Link } to="/home" active>Home</NavLink></button>
-                            </NavItem>
-                        </Nav>
-                        <Nav>
-                            <NavItem>
-                            <button><NavLink tag={ Link } to="/expenses" active>Expenses</NavLink></button>
-                            </NavItem>
-                        </Nav>
-                        </Collapse>
-                </Navbar>
-            </div>
-            <div className="col-2"></div>
-            </div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <Navbar className="navbar" expand='sm'>
+                                <NavbarToggler onClick={this.toggle} />
+                                <Collapse isOpen={this.state.isOpen} navbar>
+                                    <Nav>
+                                        <NavItem>
+                                        <NavLink tag={ Link } to="/home" active>Home</NavLink>
+                                        </NavItem>
+                                    </Nav>
+                                    
+                                    <Nav>
+                                        <NavItem>
+                                        <NavLink tag={ Link } to="/calendar" active>Calendar</NavLink>
+                                        </NavItem>
+                                    </Nav>
+
+                                    <Nav>
+                                        <NavItem>
+                                        <NavLink tag={ Link } to="/expenses" active>Expenses</NavLink>
+                                        </NavItem>
+                                    </Nav>
+                                    </Collapse>
+                                    <img src={ logo } />
+                            </Navbar>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
