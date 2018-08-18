@@ -10,12 +10,15 @@ class EditExpense extends Component {
     constructor() {
         super();
         this.state = {
-            modal: false
+            modal: false,
+            checkboxState: false
         };
 
         this.toggle = this.toggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.toggleCheckbox = this.toggleCheckbox.bind(this);
     }
+
 
     handleChange(event) {
         // this.props.onChange(event.target.value);
@@ -33,15 +36,25 @@ class EditExpense extends Component {
         });
     }
 
+    toggleCheckbox() {
+        this.setState({
+            checkboxState: !this.state.checkboxState
+        });
+    }
+
     editExpense = (event) => {
         // console.log(event);
         event.preventDefault();
         var expenseToBeEdited = {
             description: this.state.description,
+            scheduledDay: this.state.scheduledDay,
             amount: this.state.amount,
             incomeDebt: this.state.incomeDebt,
-            frequency: this.state.frequency
+            frequency: this.state.frequency,
+            recurring: this.state.checkboxState,
+            endDate: this.state.endDate
         }
+        console.log(expenseToBeEdited);
         axios.put(`/api/expenses/${this.props.id}`, expenseToBeEdited)
         .then((res) => {
             this.setState({expenses:res.data});
@@ -77,28 +90,47 @@ class EditExpense extends Component {
                     <ModalBody className="modalBody">
                         <Form onSubmit={ this.editExpense.bind(this) }>
                             <FormGroup>
-                                <Label >Description</Label>
+                                <Label for="description">
+                                    Description
+                                </Label>
                                 <Input
                                 required
                                 type="expenseDescription"
                                 defaultValue={this.props.description}
                                 onChange={this.handleChange}
-                                name="description" id="expenseDescription" />
+                                name="description"
+                                id="expenseDescription" />
                             </FormGroup>
-                            <FormGroup>
-                                <Label for="incomeDebt" sm={2}>Income or Debt</Label>
+                            <FormGroup row>
+                                <Label for="effectiveDate" sm={2}>
+                                    Effective Date
+                                </Label>
+                                <Input
+                                    required
+                                    type="date"
+                                    name="scheduledDay"
+                                    defaultValue={this.state.scheduledDay}
+                                    onChange={this.handleChange}
+                                    id="scheduledDay">
+                                </Input>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="incomeDebt" sm={2}>
+                                    Income or Debt
+                                </Label>
                                 <Input
                                     required
                                     type="select"
                                     defaultValue={this.props.incomeDebt}
-                                    onChange={this.handleChange}
                                     name="incomeDebt" id="expenseIncomeDebt">
                                         <option>Income</option>
                                         <option>Debt</option>
                                 </Input>
                             </FormGroup>
                             <FormGroup>
-                                <Label for="enterAmount" sm={2}>Enter Amount</Label>
+                                <Label for="enterAmount" sm={2}>
+                                    Enter Amount
+                                </Label>
                                 <Input
                                     required
                                     type="expenseAmount"
@@ -108,7 +140,9 @@ class EditExpense extends Component {
                                     id="expenseAmount" />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="enterFrequency" sm={2}>Frequency</Label>
+                                <Label for="enterFrequency" sm={2}>
+                                    Frequency
+                                </Label>
                                 <Input
                                     required
                                     type="select"
@@ -121,6 +155,33 @@ class EditExpense extends Component {
                                         <option>Bi-Weekly</option>
                                         <option>Weekly</option>
                                 </Input>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label check for="enterRecurring">
+                                    <Input
+                                        type="checkbox"
+                                        defaultValue={this.state.checkboxState}
+                                        checked={this.state.checkboxState}
+                                        onChange={this.handleChange}
+                                        onClick={this.toggleCheckbox}
+                                        name="recurring"
+                                        id="recurring">
+                                    </Input>{' '}
+                                    Recurring Transaction?
+                                </Label>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="endDate" sm={2}>
+                                    End date of recurring transaction:
+                                </Label>
+                                    <Input
+                                        type="date"
+                                        defaultValue={this.state.endDate}
+                                        onChange={this.handleChange}
+                                        name="endDate"
+                                        // onClick={this.toggleCheckbox.bind(this)}
+                                        id="endDate">
+                                    </Input>
                             </FormGroup>
                         </Form>
                     </ModalBody>

@@ -40,10 +40,10 @@ let content = !!this.state.isAuthenticated ?
         <div className="column">
             <div className="facebook">
                 <button><a href="http://localhost:3001/auth/facebook">Login with Facebook</a></button>
-            </div> 
-    
+            </div>
+
         <div>
-        <div className="hl"></div> 
+        <div className="hl"></div>
         </div>
 
             <div className="google">

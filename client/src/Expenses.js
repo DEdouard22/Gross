@@ -5,6 +5,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios';
 import ExpensesNavbar from './ExpensesNavbar.js';
+import AddExpense from './AddExpense.js';
 
 class Expenses extends Component {
     constructor() {
@@ -33,11 +34,9 @@ class Expenses extends Component {
         // console.log(event.target.value);
     };
 
-    addExpense = (event) => {
-        event.preventDefault();
-        var expenseToBeAdded = {description: this.state.description, date: this.state.date, amount: this.state.amount, incomeDebt: this.state.incomeDebt, frequency: this.state.frequency};
-        // this.setState({ expenses: [...this.state.expenses, expenseToBeAdded ]});
-        axios.post('/api/expenses', expenseToBeAdded)
+    addExpense = (expenseData) => {
+        console.log(expenseData);
+        axios.post('/api/expenses', expenseData)
         .then(res => this.setState( prevState => ({
             expenses: res.data
         })
@@ -70,7 +69,6 @@ class Expenses extends Component {
     render() {
 
         let expensesJSX = this.state.expenses.map((expense, index) => {
-            console.log(this.deleteTransaction);
             return <ExpenseItem deleteTransaction={this.deleteTransaction.bind(this)} updateSingleTransaction={this.updateSingleTransaction.bind(this)} key={index} {...expense} />}
         );
 
@@ -80,7 +78,10 @@ class Expenses extends Component {
                     <ExpensesNavbar /> 
                 </header>
                 <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button>
-                <Form onSubmit={ this.addExpense.bind(this) }>
+                <Button
+                    type="add" ><AddExpense addExpense={this.addExpense.bind(this)} buttonLabel="Add Transaction" {...this.props} />
+                </Button>
+                {/* <Form onSubmit={ this.addExpense.bind(this) }>
                     <FormGroup row>
                         <Label for="enterExpense" sm={2}>
                             Description
@@ -160,7 +161,7 @@ class Expenses extends Component {
                         </Col>
                     </FormGroup>
                     <Button type="submit">Submit</Button>
-                </Form>
+                </Form> */}
                 {expensesJSX}
             </div>
         );

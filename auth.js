@@ -28,6 +28,8 @@ const setupAuth = (app) => {
                 googleId: profile.id
             },
             defaults: {
+                firstName: profile.name.givenName, // added lines 32 -33 to populate user's firstName and lastName
+                lastName: profile.name.familyName,
                 username: profile.login,
                 googleId: profile.id,
                 email: profile.email,
@@ -116,7 +118,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.g
 app.get('/auth/google/callback', 
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
-    console.log(req.user);
+    res.cookie('auth', true);
     res.redirect('http://localhost:3000/calendar');
 });
 

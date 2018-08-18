@@ -16,7 +16,7 @@ class App extends Component {
 //   user: {
 //     id: 1,
 //   }
-// }    
+// }
 
 render() {
   return (
