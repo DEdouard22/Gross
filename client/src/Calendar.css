@@ -4,7 +4,38 @@
 }
 
 .header {
+    display: flex;
     min-width: calc(645px);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    /* color: rgb(49, 47, 47); */
+    /* text-shadow: 2px 2px #181f54; */
+    font-size: 1.5vw;
+    font-family: 'Zilla Slab';
+    /* font-weight: 300; */
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 20px;
+    justify-content: space-between;
+}
+
+span {
+    color: black; 
+}
+
+.col-2-right span::before {
+    display: flex;
+    content: "Next"; 
+    content: center; 
+    text-shadow: none !important;
+    justify-content: flex-end;
+}
+
+.col-2-left span::before {
+    display: flex;
+    content: "Previous"; 
+    content: center; 
+    text-shadow: none !important;
 }
 
 .col {
