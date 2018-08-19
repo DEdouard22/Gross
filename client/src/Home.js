@@ -4,6 +4,9 @@ import Header from './Header.js';
 import About from './About.js';
 import './Home.css';
 import GrossNavbar from './GrossNavbar.js';
+import save from './save2.jpeg';
+import debt from './debt1.jpg';
+import expenses from './expenses1.jpeg';
 
 class Home extends Component {
     render () {
@@ -27,18 +30,21 @@ class Home extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-4">
-                                <h4>Manage your savings goals!</h4>
-                            </div>
-                        <div className="vl-about"></div>
-                            <div className="col-4">    
-                                <h4>Track all of your expenses!</h4> 
-                            </div>
-                        <div className="vl-about"></div>
-                            <div className="col-4">
-                                <h4>Pay off all of your debt!</h4>
-                            </div>
-                        </div>
+            <div className="col-4">
+                <img id="extra" src={ save }  />
+                <h4>Manage your savings goals!</h4>
+            </div>
+            <div className="vl-about"></div>
+            <div className="col-4">
+                <img id="extra" src={ expenses }  />
+                <h4>Track all of your expenses!</h4> 
+            </div>
+            <div className="vl-about"></div>
+            <div className="col-4">
+                <img id="extra" src={ debt }  />
+                <h4>Pay off all of your debt!</h4>
+            </div>
+        </div>
             <div className="row">
                 <div className="col-12">
                     <h2>Gross is your one-stop-shop for managing all-things-financial!</h2>
