@@ -110,8 +110,16 @@ class UserAccount extends Component {
         let incomeSum = 0;
         let transactions = this.state.transactions;  
         transactions.forEach((transaction) => {
-            if(transaction.incomeDebt === "Income"){   
-                incomeSum = incomeSum + transaction.amount;     
+            if (transaction.incomeDebt === "Income"){ 
+                if (transaction.frequency === "Bi-Monthly"){
+                    incomeSum = incomeSum + (transaction.amount * 2); 
+                } else if (transaction.frequency === "Bi-Weekly"){
+                    incomeSum = incomeSum + (transaction.amount * 8);
+                } else if (transaction.frequency === "Weekly"){
+                    incomeSum = incomeSum + (transaction.amount * 4);
+                } else {
+                    incomeSum = incomeSum + transaction.amount;
+                }            
             }
         })
         return (
