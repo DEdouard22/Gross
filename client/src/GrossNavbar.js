@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 import { Link, Route } from 'react-router-dom';
 import './GrossNavbar.css';
+import logo from './gross3.png';
 
 class GrossNavbar extends Component {
     constructor(props) {
@@ -71,7 +72,7 @@ class GrossNavbar extends Component {
                                 <Collapse isOpen={this.state.isOpen} navbar>
                                     <Nav>
                                         <NavItem>
-                                            <a href="/login">Log In</a>
+                                        <NavLink tag={ Link } to="/login" active>Log In</NavLink>
                                         </NavItem>
                                     </Nav>
                                     <Nav>
@@ -80,7 +81,7 @@ class GrossNavbar extends Component {
                                         </NavItem>
                                     </Nav>
                                     </Collapse>
-                                    <img className="navbar-brand" src="grosslogo.png"/>
+                                    <img src={ logo } />
                             </Navbar>
                         </div>
                     </div>

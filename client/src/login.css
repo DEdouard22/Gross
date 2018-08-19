@@ -52,6 +52,8 @@ h1.login-title {
     background-position: center;
     border: 5px solid black;
     height: 400px;
+    justify-content: center;
+    align-items: center;
 }
 
 #auth {

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './login.css';
 import Auth from './Auth.js';
 import Footer from './Footer.js';
+import LoginNavbar from './LoginNavbar.js';
 
 
 
@@ -12,6 +13,7 @@ class Login extends Component {
     return (
       <div>
         <div className="container">
+        < LoginNavbar />
           <div className="row">
             <div className="col-12" id="log-title"> 
               <div className="log-title">
@@ -32,9 +34,9 @@ class Login extends Component {
           <div className="col-1"></div>
       </div>
           <div className="row">
-          <div className="col-12">
+          {/* <div className="col-12">
             <Footer />
-          </div>
+          </div> */}
           </div>
           </div>
       </div>
