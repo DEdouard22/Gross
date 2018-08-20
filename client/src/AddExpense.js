@@ -4,6 +4,7 @@ import { Col, Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBo
 import axios from 'axios';
 import './AddExpense.css';
 import ExpenseItem from './ExpenseItem.js';
+import dateFns, { eachDay, isBefore } from "date-fns"; // will be used to get current date
 
 class AddExpense extends Component {
 
@@ -48,6 +49,62 @@ class AddExpense extends Component {
         this.setState({[key]: val || !this.state[key]})
     }
     // this.updateLocal('somekey', someVal)
+
+    recurringCalculation = (formData) => {
+        console.log(this.props);
+        console.log("this is the formData");
+        console.log(formData);
+        if (!formData.recurring) {
+            this.props.addExpense({
+                description: this.state.description,
+                scheduledDay: this.state.scheduledDay,
+                amount: this.state.amount,
+                incomeDebt: this.state.incomeDebt,
+                frequency: this.state.frequency,
+                recurring: this.state.recurring,
+                endDate: this.state.endDate
+            });
+        }
+        else {
+            console.log("recurring payment!");
+            //recurrTrans will be an array of objects.
+            let recurrTrans = [];
+            if (this.state.frequency == "Weekly") {
+                console.log('Weekly was selected !');
+                let currDay = this.state.scheduledDay;
+                let endDay  = this.state.endDate;
+                console.log(currDay);
+                while (isBefore(currDay,dateFns.addDays(endDay, 1))){
+                    console.log(currDay);
+                    recurrTrans.push({
+                        description: this.state.description,
+                        scheduledDay: currDay,
+                        amount: this.state.amount,
+                        incomeDebt: this.state.incomeDebt,
+                        frequency: this.state.frequency,
+                        recurring: this.state.recurring,
+                        endDate: this.state.endDate
+                    })
+                    currDay = dateFns.addDays(currDay, 7);
+                }
+            console.log(recurrTrans);    
+            }
+            else if (this.state.frequency == "Bi-Weekly") {
+                console.log('Bi-Weekly was selected!');
+            }
+            else if (this.state.frequency == "Bi-Monthly") {
+                console.log('Bi-Monthly was selected!');
+            }
+            else if (this.state.frequency == "Monthly") {
+                console.log('Monthly was selected!');
+            }
+            else {
+                console.log("Recurring was selected with out a frequency!");
+            }
+
+        }
+    }
+
     render () {
         return (
             <div>
@@ -170,7 +227,8 @@ class AddExpense extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={ () => {this.props.addExpense({
+                        {/* //create another button that launches the recurring calculation method.  */}
+                        <Button onClick={ () => {this.recurringCalculation({
                             description: this.state.description,
                             scheduledDay: this.state.scheduledDay,
                             amount: this.state.amount,
@@ -179,7 +237,16 @@ class AddExpense extends Component {
                             recurring: this.state.recurring,
                             endDate: this.state.endDate
                             }); this.closeModal()} } type="submit">Save</Button>
-                        <Button onClick={ this.toggle }>Cancel</Button>
+                        {/* <Button onClick={ () => {this.props.addExpense({
+                            description: this.state.description,
+                            scheduledDay: this.state.scheduledDay,
+                            amount: this.state.amount,
+                            incomeDebt: this.state.incomeDebt,
+                            frequency: this.state.frequency,
+                            recurring: this.state.recurring,
+                            endDate: this.state.endDate
+                            }); this.closeModal()} } type="submit">Save</Button>*/}
+                        <Button onClick={ this.toggle }>Cancel</Button> 
                     </ModalFooter>
                 </Modal>
             </div>
