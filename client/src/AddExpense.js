@@ -74,7 +74,7 @@ class AddExpense extends Component {
                 let currDay = this.state.scheduledDay;
                 let endDay  = this.state.endDate;
                 console.log(currDay);
-                while (isBefore(currDay,dateFns.addDays(endDay, 1))){
+                while (dateFns.isBefore(currDay,dateFns.addDays(endDay, 1))){
                     console.log(currDay);
                     recurrTrans.push({
                         description: this.state.description,
@@ -87,7 +87,8 @@ class AddExpense extends Component {
                     })
                     currDay = dateFns.addDays(currDay, 7);
                 }
-            console.log(recurrTrans);    
+            console.log(recurrTrans); 
+            this.props.addExpense(recurrTrans);
             }
             else if (this.state.frequency == "Bi-Weekly") {
                 console.log('Bi-Weekly was selected!');

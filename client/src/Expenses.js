@@ -36,6 +36,14 @@ class Expenses extends Component {
 
     addExpense = (expenseData) => {
         console.log(expenseData);
+        // expenseData.map( tranData =>{
+        //     axios.post('/api/expenses', tranData)
+        //     .then(res => this.setState( prevState => ({
+        //         expenses: res.data
+        //     })
+        //     // .catch(error => (error))
+        //     ))
+        // })
         axios.post('/api/expenses', expenseData)
         .then(res => this.setState( prevState => ({
             expenses: res.data
