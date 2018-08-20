@@ -24,7 +24,17 @@ class CalendarModal extends React.Component {
     let incomeJSX = this.props.currentIncomes.map(Inc => {
         let listOfIncome = [];
         return (
-            <p>{Inc.description}</p>
+            <div>
+              <b>Description</b><b>Amount</b>
+              <span>{Inc.description}</span>{'=='}<span>{Inc.amount}</span>
+              <br />
+            </div>
+        )
+    });
+    let debtJSX = this.props.currentDebts.map(Deb => {
+        let listOfDebts = [];
+        return (
+          <p><span>{Deb.description}</span><span>{Deb.amount}</span></p>
         )
     })
     return (
@@ -33,12 +43,12 @@ class CalendarModal extends React.Component {
         <Modal isOpen={this.state.modal} fade={false} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.dayInRow}</ModalHeader>
           <ModalBody>
-              <b>Income for this day</b>
+            <b>Incomes for this day</b>
               {incomeJSX}
           </ModalBody>
           <ModalBody>
-              Debts for this day
-              
+            <b>Debts for this day</b>
+              {debtJSX}
           </ModalBody>
           <ModalFooter>
             {/* <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
