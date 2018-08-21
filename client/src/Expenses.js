@@ -36,21 +36,28 @@ class Expenses extends Component {
 
     addExpense = (expenseData) => {
         console.log(expenseData);
-        //expenseData is now an array of objects. we have to map through the array to post each object. 
-        expenseData.map( tranData =>{
-            axios.post('/api/expenses', tranData)
+        // Found a bug where this does not work with a single transaction any more. need to add conditionals.
+        //expenseData can now be a single object or an array of objects. 
+        //Arr => we have to map through the array to post each object. 
+        //Single => 
+        if (Array.isArray(expenseData)) {
+            expenseData.map( tranData =>{
+                axios.post('/api/expenses', tranData)
+                .then(res => this.setState( prevState => ({
+                    expenses: res.data
+                })
+                // .catch(error => (error))
+                ))
+            })
+        }
+        else {
+            axios.post('/api/expenses', expenseData)
             .then(res => this.setState( prevState => ({
                 expenses: res.data
             })
             // .catch(error => (error))
             ))
-        })
-        // axios.post('/api/expenses', expenseData)
-        // .then(res => this.setState( prevState => ({
-        //     expenses: res.data
-        // })
-        // // .catch(error => (error))
-        // ))
+        }
     };
 
     componentDidMount() {
