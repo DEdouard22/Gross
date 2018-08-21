@@ -36,12 +36,21 @@ class Expenses extends Component {
 
     addExpense = (expenseData) => {
         console.log(expenseData);
-        axios.post('/api/expenses', expenseData)
-        .then(res => this.setState( prevState => ({
-            expenses: res.data
+        //expenseData is now an array of objects. we have to map through the array to post each object. 
+        expenseData.map( tranData =>{
+            axios.post('/api/expenses', tranData)
+            .then(res => this.setState( prevState => ({
+                expenses: res.data
+            })
+            // .catch(error => (error))
+            ))
         })
-        // .catch(error => (error))
-        ))
+        // axios.post('/api/expenses', expenseData)
+        // .then(res => this.setState( prevState => ({
+        //     expenses: res.data
+        // })
+        // // .catch(error => (error))
+        // ))
     };
 
     componentDidMount() {
