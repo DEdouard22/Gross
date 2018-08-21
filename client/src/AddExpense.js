@@ -34,11 +34,11 @@ class AddExpense extends Component {
         });
     }
 
-    // toggleCheckbox() {
-    //     this.setState({
-    //         checkboxState: !this.state.checkboxState
-    //     });
-    // }
+    toggleCheckbox() {
+        this.setState({
+            checkboxState: !this.state.checkboxState
+        });
+    }
 
     closeModal = () => {
         this.setState( {modal: false })
@@ -49,6 +49,7 @@ class AddExpense extends Component {
     }
     // this.updateLocal('somekey', someVal)
     render () {
+
         return (
             <div>
                 <Button onClick={ this.toggle } className="AddExpense">{ this.props.buttonLabel }</Button>
@@ -147,7 +148,7 @@ class AddExpense extends Component {
                                         value={this.state.checkboxState}
                                         onChange={this.handleChange}
                                         name="recurring"
-                                        // onClick={this.toggleCheckbox.bind(this)}
+                                        onClick={this.toggleCheckbox.bind(this)}
                                         id="recurring">
                                     </Input>
                                 </Col>
@@ -157,14 +158,31 @@ class AddExpense extends Component {
                                     End date of recurring transaction:
                                 </Label>
                                 <Col sm={10}>
-                                    <Input
-                                        type="date"
-                                        value={this.state.endDate}
-                                        onChange={this.handleChange}
-                                        name="endDate"
-                                        // onClick={this.toggleCheckbox.bind(this)}
-                                        id="endDate">
-                                    </Input>
+                                    {this.state.checkboxState &&
+                                        <Input
+                                            type="date"
+                                            value={this.state.endDate}
+                                            onChange={this.handleChange}
+                                            name="endDate"
+                                            // onClick={this.toggleCheckbox.bind(this)}
+                                            id="endDate">
+                                        </Input>
+                                    }
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="savedAmount" sm={2}>Saved Amount</Label>
+                                <Col sm={10}>
+                                    {this.state.incomeDebt == 'Income' &&
+                                        <Input
+                                            required
+                                            type="savedAmount"
+                                            onChange={this.handleChange}
+                                            value={this.state.savedAmount}
+                                            name="savedAmount"
+                                            id="savedAmount"
+                                            placeholder="Enter amount saving from this income" />
+                                    }
                                 </Col>
                             </FormGroup>
                         </Form>
@@ -176,8 +194,9 @@ class AddExpense extends Component {
                             amount: this.state.amount,
                             incomeDebt: this.state.incomeDebt,
                             frequency: this.state.frequency,
-                            recurring: this.state.recurring,
-                            endDate: this.state.endDate
+                            recurring: this.state.checkboxState,
+                            endDate: this.state.endDate,
+                            savedAmount: this.state.savedAmount
                             }); this.closeModal()} } type="submit">Save</Button>
                         <Button onClick={ this.toggle }>Cancel</Button>
                     </ModalFooter>

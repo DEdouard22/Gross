@@ -19,8 +19,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res) {
-    console.log(req.user);
-    if (!req.body.recurring){
+    console.log(req.body);
+    // if (!req.body.recurring){
         models.Transaction.create({
             description: req.body.description,
             scheduledDay: req.body.scheduledDay,
@@ -28,31 +28,33 @@ router.post('/', function(req, res) {
             frequency: req.body.frequency,
             incomeDebt: req.body.incomeDebt,
             UserId: req.user.id,
-            recurring: req.body.recurring
+            recurring: req.body.recurring,
+            endDate: req.body.endDate,
+            savedAmount: req.body.savedAmount
         })
-    
+
         .then(transactions => {
             res.redirect('/api/expenses');
         })
-    }
-    else {
-        if (req.frequency == "Monthly") {
-            console.log('Monthly frequency selected');
-            
-        }
-        else if (req.frequency == "Bi-Monthly"){
-            console.log('Bi-Monthly frequency selected');
-        }
-        else if (req.frequency == "Bi-Weekly") {
-            console.log('Bi-weekly frequency selected');
-        }
-        else if (req.frequency == "Weekly") {
-            console.log('Weekly frequency selected');
-        }
-        else {
-            console.log("no valid frequency selected");
-        }
-    }
+    // }
+    // else {
+    //     if (req.frequency == "Monthly") {
+    //         console.log('Monthly frequency selected');
+
+    //     }
+    //     else if (req.frequency == "Bi-Monthly"){
+    //         console.log('Bi-Monthly frequency selected');
+    //     }
+    //     else if (req.frequency == "Bi-Weekly") {
+    //         console.log('Bi-weekly frequency selected');
+    //     }
+    //     else if (req.frequency == "Weekly") {
+    //         console.log('Weekly frequency selected');
+    //     }
+    //     else {
+    //         console.log("no valid frequency selected");
+    //     }
+    // }
 })
 
 router.put('/:id', ( req, res, next ) => {

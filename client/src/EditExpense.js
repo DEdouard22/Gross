@@ -52,7 +52,8 @@ class EditExpense extends Component {
             incomeDebt: this.state.incomeDebt,
             frequency: this.state.frequency,
             recurring: this.state.checkboxState,
-            endDate: this.state.endDate
+            endDate: this.state.endDate,
+            savedAmount: this.state.savedAmount
         }
         console.log(expenseToBeEdited);
         axios.put(`/api/expenses/${this.props.id}`, expenseToBeEdited)
@@ -109,7 +110,7 @@ class EditExpense extends Component {
                                     required
                                     type="date"
                                     name="scheduledDay"
-                                    defaultValue={this.state.scheduledDay}
+                                    defaultValue={this.props.scheduledDay}
                                     onChange={this.handleChange}
                                     id="scheduledDay">
                                 </Input>
@@ -129,7 +130,7 @@ class EditExpense extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="enterAmount" sm={2}>
-                                    Enter Amount
+                                    Enter Amount: $
                                 </Label>
                                 <Input
                                     required
@@ -174,14 +175,27 @@ class EditExpense extends Component {
                                 <Label for="endDate" sm={2}>
                                     End date of recurring transaction:
                                 </Label>
-                                    <Input
-                                        type="date"
-                                        defaultValue={this.state.endDate}
-                                        onChange={this.handleChange}
-                                        name="endDate"
-                                        // onClick={this.toggleCheckbox.bind(this)}
-                                        id="endDate">
-                                    </Input>
+                                    {this.state.checkboxState &&
+                                        <Input
+                                            type="date"
+                                            defaultValue={this.props.endDate}
+                                            onChange={this.handleChange}
+                                            name="endDate"
+                                            // onClick={this.toggleCheckbox.bind(this)}
+                                            id="endDate">
+                                        </Input>
+                                    }
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="savedAmount" sm={2}>Saved Amount: $</Label>
+                                    {this.props.incomeDebt == 'Income' &&
+                                        <Input
+                                            type="savedAmount"
+                                            onChange={this.handleChange}
+                                            defaultValue={this.props.savedAmount}
+                                            name="savedAmount"
+                                            id="savedAmount" />
+                                    }
                             </FormGroup>
                         </Form>
                     </ModalBody>

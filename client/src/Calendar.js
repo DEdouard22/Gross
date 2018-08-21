@@ -75,13 +75,13 @@ class Calendar extends Component {
 
         let rowIndex = 0;
         while(daysInView.length > 0) {
-            // Days in view is the total number of days that will appear on the calendar month view. 
+            // Days in view is the total number of days that will appear on the calendar month view.
             // the splice method pulls out the firs 7 days and returns a row that will be pushed into calendar.
             var currentrow = daysInView.splice(0, 7);
             rows[rowIndex] = [];
             let transactions = this.state.calendarData.Transactions;
             // This section iterates over each day in that row and decides whether or not it is in the current month
-            // and sets the dayActive attribute accordingly. 
+            // and sets the dayActive attribute accordingly.
             currentrow.map((dayInRow, index) => {
                 let dayActive = true;
                 let currDay = false;
@@ -152,7 +152,7 @@ class Calendar extends Component {
                 console.log(dayInRow);
                 return rows[rowIndex].push(
                     <div className="calDay">
-                        
+
                         <ListGroup className={(!dayActive) ? 'dayGroup col col-center othermonth' : currDay ? 'dayCurr col col-center currentmonth' :'dayGroup col col-center currentmonth'}>
                             <ListGroupItem className="viewDay" key={index}><CalendarModal dayInRow={dateFns.getDate(dayInRow)} currentDebts={currentDebts} currentIncomes={currentIncomes} className='dayModel' buttonLabel={dateFns.getDate(dayInRow)}  /></ListGroupItem>
                             { (currentIncomes.length < 1) ? <ListGroupItem>{"__"}</ListGroupItem> : (currentIncomes.length < 2) ? currentIncomes.map((transaction => <ListGroupItem className="IncomeListItem" key={index}>{transaction.description}</ListGroupItem>)) : <ListGroupItem className="IncomeListItem" key={index}>{'Incomes'}</ListGroupItem> }
@@ -213,7 +213,6 @@ class Calendar extends Component {
                 {this.renderHeader()}
                 {this.renderWeekDays()}
                 {this.renderCardRow()}
-                <Button tag={ Link } to="/expenses" className="expenses" type="expenses">Expenses</Button>
             </div>
         )
     }
