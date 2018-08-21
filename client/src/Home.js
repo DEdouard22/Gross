@@ -46,13 +46,11 @@ class Home extends Component {
             </div>
         </div>
             <div className="row">
-                <div className="col-12">
+                <div className="col-12" id="last">
                     <h2>Gross is your one-stop-shop for managing all-things-financial!</h2>
                 </div>
             </div>
         </div>
-                        {/* <About /> */}
-                        {/* <Footer /> */}
                     </div>
                 </div>
             </div>

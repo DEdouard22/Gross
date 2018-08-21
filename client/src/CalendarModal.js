@@ -29,7 +29,7 @@ class CalendarModal extends React.Component {
     })
     return (
       <div>
-        <Button color="secondary" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Button id="cal" color="secondary" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} fade={false} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.dayInRow}</ModalHeader>
           <ModalBody>

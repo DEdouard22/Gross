@@ -1,0 +1,10 @@
+button .AddExpense {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 1.35vw;
+    font-family: 'Zilla Slab';
+    color: black;
+    font-weight: 400;
+}
+

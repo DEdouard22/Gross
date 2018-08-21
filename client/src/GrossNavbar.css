@@ -8,9 +8,9 @@ a {
     display: flex;
     justify-content: space-around;
     text-transform: uppercase;
-    letter-spacing: .2em;
+    letter-spacing: .2vw;
     color: rgb(252, 252, 252);
-    text-shadow: 2px 2px #181f54;
+    text-shadow: .25vw .25vw #181f54;
     font-size: 1.5vw;
     font-family: 'Zilla Slab';
     font-weight: 300;
@@ -18,5 +18,9 @@ a {
 
 
 img {
-    height: 80px;
+    height: 4vw;
+}
+
+.collapse navbar {
+    color: white;
 }
