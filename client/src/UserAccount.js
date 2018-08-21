@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Progress, Row, Col, Collapse, Table } from 'reactstrap';
+import { Jumbotron, Container, Dropdown, DropdownMenu, DropdownToggle, Row, Col, Collapse, Table,
+    Form, FormGroup, FormText, Label, Input, Button, Progress } from 'reactstrap';
 import './UserAccount.css';
 import logo from './userIcon.png';
 import axios from 'axios';
 import UserNavbar from './UserNavbar.js';
+import SaveGoal from './SaveGoal.js';
+import { homedir } from 'os';
 
 class UserAccount extends Component {
     constructor(props) {
@@ -50,6 +53,7 @@ class UserAccount extends Component {
                 firstName: res.data.firstName,
                 lastName: res.data.lastName,
                 email: res.data.email,
+                saveGoal: res.data.saveGoal,
                 transactions: res.data.Transactions
             })
             console.log(res.data)
@@ -80,7 +84,15 @@ class UserAccount extends Component {
         let transactions = this.state.transactions;  
         transactions.forEach((transaction) => {
             if(transaction.incomeDebt === "Debt"){   
-                debtSum = debtSum + transaction.amount;     
+                if (transaction.frequency === "Bi-Monthly"){
+                    debtSum = debtSum + (transaction.amount * 2); 
+                } else if (transaction.frequency === "Bi-Weekly"){
+                    debtSum = debtSum + (transaction.amount * 8);
+                } else if (transaction.frequency === "Weekly"){
+                    debtSum = debtSum + (transaction.amount * 4);
+                } else {
+                    debtSum = debtSum + transaction.amount;
+                }           
             }
         })
         return (
@@ -130,6 +142,19 @@ class UserAccount extends Component {
         );
     }
 
+    addSaveGoal = (event) =>{
+        event.preventDefault();
+        var editSaveGoal = {
+            saveGoal: this.state.saveGoal
+        }
+        console.log(editSaveGoal);
+        axios.put(`/api/users/${this.props.id}`, editSaveGoal)
+        .then((res) => {
+            this.setState({saveGoal:res.data});
+            console.log("hi");
+        });
+    }
+
     render() {
         return(
             <div>
@@ -158,6 +183,7 @@ class UserAccount extends Component {
                                     Payment Methods
                                 </DropdownToggle>
                             </div>
+                            <h2>Expenses and Incomes</h2>
                             <div className="expenseDescription">
                                 <Row>
                                     <Col xs="6">
@@ -199,9 +225,22 @@ class UserAccount extends Component {
                                 <div onClick={this.togglePayment}>Card option 2</div>
                             </DropdownMenu>
                         </Dropdown>    
-                        <div className="goals text-left">Saving Goals
-                        {/* add function to take savings goal and a percentage the user wants to save of their income sum and change value attribute to {transaction."percentage"} */}
-                            <Progress animated color="success" value="25"/>  
+                        <div className="saveGoalComponent">
+                            <h2>Savings</h2>
+                            <Form>
+                                <FormGroup row>
+                                    <Label for="saveGoal" sm={1} size="lg">Savings</Label>
+                                    <Col sm={9}>
+                                        <Input type="number" name="number" id="saveGoal" placeholder="Enter"/> 
+                                        <FormText>Input amount from your income you would like to save</FormText>
+                                    </Col>
+                                    <Button sm={2} onClick={ this.addSaveGoal.bind(this) }>Save</Button>
+                                </FormGroup>
+                            </Form>
+                            <div className="goals text-left">Saving Goals
+                                {/* add function to take savings goal and a percentage the user wants to save of their income sum and change value attribute to {transaction."percentage"} */}
+                                <Progress animated color="success" value="25"/>  
+                            </div>
                         </div>
                     </div>
                 </Collapse>

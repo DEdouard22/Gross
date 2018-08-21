@@ -16,10 +16,6 @@ h1 {
     margin: 10px;
 }
 
-.goals {
-    margin: 0px 20px;
-}
-
 .payment {
     padding-top: 20px;
     padding-bottom: 30px;
@@ -39,10 +35,20 @@ h1 {
 
 h2 {
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 .tableTitle {
     text-align: center;
     font-size: 35px;
+}
+.saveGoalComponent {
+    margin: 0px 20px;
+}
+.saveGoalComponent h2 {
+    margin-bottom: 5px;
+}
+.saveGoalComponent button {
+    width: 70px;
+    height: 39px;
 }
