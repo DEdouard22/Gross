@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap';
 
 class CalendarModal extends React.Component {
   constructor(props) {
@@ -23,19 +23,31 @@ class CalendarModal extends React.Component {
 
     let incomeJSX = this.props.currentIncomes.map(Inc => {
         let listOfIncome = [];
+        // return (
+        //     <div>
+        //       <b>Description</b><b>Amount</b>
+        //       <span>{Inc.description}</span>{'=='}<span>{Inc.amount}</span>
+        //       <br />
+        //     </div>
+        // )
         return (
-            <div>
-              <b>Description</b><b>Amount</b>
-              <span>{Inc.description}</span>{'=='}<span>{Inc.amount}</span>
-              <br />
-            </div>
-        )
+          <tr>
+              <td>{Inc.description}</td>
+              <td>{Inc.amount}</td>
+          </tr>
+      );
     });
     let debtJSX = this.props.currentDebts.map(Deb => {
         let listOfDebts = [];
+        // return (
+        //   <p><span>{Deb.description}</span><span>{Deb.amount}</span></p>
+        // )
         return (
-          <p><span>{Deb.description}</span><span>{Deb.amount}</span></p>
-        )
+          <tr>
+              <td>{Deb.description}</td>
+              <td>{Deb.amount}</td>
+          </tr>
+      );
     })
     return (
       <div>
@@ -44,11 +56,31 @@ class CalendarModal extends React.Component {
           <ModalHeader toggle={this.toggle}>{this.props.dayInRow}</ModalHeader>
           <ModalBody>
             <b>Incomes for this day</b>
-              {incomeJSX}
+              <Table bordered>  
+                  <thead>
+                    <tr>
+                      <th>Income</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {incomeJSX}
+                  </tbody>
+              </Table>
           </ModalBody>
           <ModalBody>
             <b>Debts for this day</b>
+            <Table bordered>  
+              <thead>
+                <tr>
+                  <th>Debt</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
               {debtJSX}
+              </tbody>
+            </Table>  
           </ModalBody>
           <ModalFooter>
             {/* <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
