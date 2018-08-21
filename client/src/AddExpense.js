@@ -76,7 +76,11 @@ class AddExpense extends Component {
                 console.log(currDay);
                 while (dateFns.isBefore(currDay,dateFns.addDays(endDay, 1))){
                     console.log(currDay);
-                    recurrTrans.push({
+                    if (dateFns.isAfter(currDay, endDay)){
+                        break;
+                    }
+                    else {
+                        recurrTrans.push({
                         description: this.state.description,
                         scheduledDay: currDay,
                         amount: this.state.amount,
@@ -85,6 +89,7 @@ class AddExpense extends Component {
                         recurring: this.state.recurring,
                         endDate: this.state.endDate
                     })
+                    }
                     currDay = dateFns.addDays(currDay, 7);
                 }
             console.log(recurrTrans); 
@@ -92,15 +97,83 @@ class AddExpense extends Component {
             }
             else if (this.state.frequency == "Bi-Weekly") {
                 console.log('Bi-Weekly was selected!');
+                let currDay = this.state.scheduledDay;
+                let endDay  = this.state.endDate;
+                while (dateFns.isBefore(currDay,dateFns.addDays(endDay, 1))){
+                    console.log(currDay);
+                    if (dateFns.isAfter(currDay, endDay)){
+                        break;
+                    }
+                    else {
+                        recurrTrans.push({
+                        description: this.state.description,
+                        scheduledDay: currDay,
+                        amount: this.state.amount,
+                        incomeDebt: this.state.incomeDebt,
+                        frequency: this.state.frequency,
+                        recurring: this.state.recurring,
+                        endDate: this.state.endDate
+                    })
+                    }
+                    currDay = dateFns.addDays(currDay, 14);
+                }
+                console.log(recurrTrans); 
+                this.props.addExpense(recurrTrans);
             }
             else if (this.state.frequency == "Bi-Monthly") {
                 console.log('Bi-Monthly was selected!');
+                let currDay = this.state.scheduledDay;
+                let endDay  = this.state.endDate;
+                while (dateFns.isBefore(currDay,dateFns.addDays(endDay, 1))){
+                    if (dateFns.isAfter(currDay, endDay)){
+                        break;
+                    }
+                    else{ 
+                        if ((dateFns.getDate(currDay) === 1) || (dateFns.getDate(currDay) === 15)){
+                                recurrTrans.push({
+                                description: this.state.description,
+                                scheduledDay: currDay,
+                                amount: this.state.amount,
+                                incomeDebt: this.state.incomeDebt,
+                                frequency: this.state.frequency,
+                                recurring: this.state.recurring,
+                                endDate: this.state.endDate
+                            })
+                        }
+                        currDay = dateFns.addDays(currDay, 1);
+                    }
+                    
+                }
+                console.log(recurrTrans); 
+                this.props.addExpense(recurrTrans);
             }
             else if (this.state.frequency == "Monthly") {
                 console.log('Monthly was selected!');
+                let currDay = this.state.scheduledDay;
+                let endDay  = this.state.endDate;
+                while (dateFns.isBefore(currDay, dateFns.addDays(endDay, 1))){
+                    if (dateFns.isAfter(currDay, endDay)){
+                        break;
+                    }
+                    else {
+                        recurrTrans.push({
+                        description: this.state.description,
+                        scheduledDay: currDay,
+                        amount: this.state.amount,
+                        incomeDebt: this.state.incomeDebt,
+                        frequency: this.state.frequency,
+                        recurring: this.state.recurring,
+                        endDate: this.state.endDate
+                    })
+                    }
+                    currDay = dateFns.addMonths(currDay, 1);
+                }
+                console.log(recurrTrans); 
+                this.props.addExpense(recurrTrans);
             }
             else {
                 console.log("Recurring was selected with out a frequency!");
+                alert("Recurring was selected with out a frequency!");
             }
 
         }
