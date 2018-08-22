@@ -105,11 +105,6 @@ app.get('/api/user', (req, res, next) => {
     }
 })
 
-// Handles any requests that don't match the ones above
-app.get('*', (req,res) =>{
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
-
 // app.get('/auth/google', (req, res) => { console.log("Incoming request to auth"); res.send({"check": "checking"}); });
 app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
