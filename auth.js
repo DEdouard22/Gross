@@ -115,11 +115,11 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.g
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page, Or in this case, the calendar.
-app.get('/auth/google/callback', 
+app.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
     res.cookie('auth', true);
-    res.redirect('http://localhost:3000/calendar');
+    res.redirect('https://gross.herokuapp.com/calendar');
 });
 
 // Redirect the user to Facebook for authentication.  When complete,
