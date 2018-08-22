@@ -31,12 +31,10 @@ class ExpensesNavbar extends Component {
     render() {
         return (
             <div>
-                <div className="container">
+                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <Navbar className="navbar" expand='sm'>
-                                <NavbarToggler onClick={this.toggle} />
-                                <Collapse isOpen={this.state.isOpen} navbar>
+                            <Navbar className="navbar" expand='sm' data-toggle='collapse' data-target='.nav-collapse'>
                                     <Nav>
                                         <NavItem>
                                         <NavLink tag={ Link } to="/home" active>Home</NavLink>
@@ -58,8 +56,10 @@ class ExpensesNavbar extends Component {
                                         <NavLink tag={ Link } to="/user" active>My Profile</NavLink>
                                         </NavItem>
                                     </Nav>
-                                    </Collapse>
+                                    <div className="collapse navbar-collapse justify-content-end">
+                                    <div className='logo'>
                                     <img src={ logo } />
+                                    </div></div>
                             </Navbar>
                         </div>
                     </div>
