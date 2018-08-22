@@ -20,7 +20,7 @@ const setupAuth = (app) => {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `${process.env.APP_URL}/auth/google/callback`
+        callbackURL: `${process.env.APP_URL}/auth/google`
     },
     function(accessToken, refreshToken, profile, done) {
         models.User.findOrCreate({
@@ -48,7 +48,7 @@ const setupAuth = (app) => {
         callbackURL: `${process.env.APP_URL}/auth/facebook/callback`
     },
     function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ facebookId: profile.id } , function(err, user) {
+        models.User.findOrCreate({ facebookId: profile.id } , function(err, user) {
         if (err) { return done(err); }
         done(null, user);
         });
@@ -94,7 +94,6 @@ passport.deserializeUser((userId, done) => {
 })
 
 app.use(passport.initialize());
-
 app.use(passport.session());
 
 // this is a simple API to check if there is a user
