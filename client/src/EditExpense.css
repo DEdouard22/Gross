@@ -5,3 +5,12 @@
     margin-top: 20px;
     color: white;
 } */
+
+.button {
+    color: black
+}
+
+.check {
+    position: absolute;
+    left: 2rem;
+}

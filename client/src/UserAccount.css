@@ -1,5 +1,11 @@
 h1 {
     color: black;
+    font-family: 'zilla slab';
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: rgb(71, 66, 66);
+    font-family: 'Zilla Slab';
+    font-weight: 20;
 }
 
 .jumbotron {
@@ -10,16 +16,24 @@ h1 {
 .jumbotron h1 {
     padding: 5px;
     margin: 0;
+    
 }
 
 .jumbotron h2 {
     margin: 10px;
+    
 }
 
 .payment {
     padding-top: 20px;
     padding-bottom: 30px;
     margin: 20px;
+    font-family: 'zilla slab';
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: rgb(71, 66, 66);
+    font-family: 'Zilla Slab';
+    font-weight: 20;
 }
 
 .userIcon {
@@ -31,11 +45,18 @@ h1 {
 .nav-help {
     color: grey;
     text-align: center;
+    font-family: 'zilla slab';
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: rgb(71, 66, 66);
+    font-family: 'Zilla Slab';
+    font-weight: 20;
 }
 
 h2 {
     padding: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
+    
 }
 
 .tableTitle {
@@ -51,4 +72,11 @@ h2 {
 .saveGoalComponent button {
     width: 70px;
     height: 39px;
+    font-size: 1.5vw;
+    font-family: 'zilla slab';
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: rgb(71, 66, 66);
+    font-family: 'Zilla Slab';
+    font-weight: 20;
 }

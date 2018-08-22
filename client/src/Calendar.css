@@ -29,23 +29,34 @@ span {
     content: center; 
     text-shadow: none !important;
     justify-content: flex-end;
+    font-size: 1vw;
 }
 
 .col-2-left span::before {
     display: flex;
-    content: "Previous"; 
+    content: "Prev"; 
     content: center; 
     text-shadow: none !important;
+    font-size: 1vw;
 }
+
+
 
 .col {
     padding: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 1vw;
+    font-family: 'Zilla Slab';
+    color: black;
 }
 
 .viewDay.list-group-item {
     text-align: right;
     padding: 0px;
     line-height: 30px;
+    
 }
 
 .othermonth {
@@ -60,22 +71,22 @@ span {
     border-color: black;
     width: 100%;
     min-height: 126px;
-    border: 1px solid gray;
+    border: 0.5px solid rgb(205, 208, 211); /*was dark gray and 1px*/
 }
 
 .dayCurr {
-    background-color: aquamarine;
-    border-color: black;
+    /* background-color: aquamarine;
+    border-color: black; */
     width: 100%;
     min-height: 126px;
-    border: 2px solid green;
+    border: 3px solid green;
 }
 
 .list-group-item {
     border: 0px;
     padding: 0px;
-    border-color: black;
-    border: 1px solid gray;
+    /* border-color: black; */
+    /* border: 1px solid gray; */
     line-height: 30px;
     text-align: center;
 }
@@ -90,4 +101,17 @@ span {
 
 .DebtListItem {
     color: red;
+}
+
+#cal {
+    width: 1.75vw;
+    height: 1.75vw;
+    text-align: center;
+    padding: 6px 0;
+    font-size: .75vw;
+    line-height: .8;
+    border-radius: 15px;
+    background-color: rgb(89, 92, 94);
+    font-family: 'Zilla Slab';
+    background-color: black;
 }

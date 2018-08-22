@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     background-color: black;
 }
 
@@ -8,7 +8,7 @@ a {
     display: flex;
     justify-content: space-around;
     text-transform: uppercase;
-    letter-spacing: .2em;
+    letter-spacing: .2vw;
     color: rgb(252, 252, 252);
     text-shadow: 2px 2px #181f54;
     font-size: 1.5vw;
@@ -16,7 +16,24 @@ a {
     font-weight: 300;
 }
 
+nav li:last-child { 
+    display: flex;
+    float: right; 
+}
 
-img {
-    height: 80px;
+nav li { 
+    display: flex;
+    list-style:none;
+    margin:10px;
+    float: right; 
+}
+
+.logo img {
+    display: flex;
+    height: 4vw;
+    justify-content: flex-end;
+}
+
+.collapse navbar {
+    color: white;
 }

@@ -26,9 +26,11 @@ router.post('/', function(req, res) {
             frequency: req.body.frequency,
             incomeDebt: req.body.incomeDebt,
             UserId: req.user.id,
-            recurring: req.body.recurring
+            recurring: req.body.recurring,
+            endDate: req.body.endDate,
+            savedAmount: req.body.savedAmount
         })
-    
+
         .then(transactions => {
             res.redirect('/api/expenses');
         })

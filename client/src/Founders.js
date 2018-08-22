@@ -2,6 +2,7 @@ import React from 'react';
 import './About.css';
 import carlyimg from './carly.jpg';
 import kamimg from './kam.jpg';
+import davidimg from './david.png';
 
 
 const Founders = (props) => {
@@ -38,7 +39,7 @@ const Founders = (props) => {
                         <div className="col-3">
                             <div className="card">
                                 <div>
-                                <img id="founders" src={ carlyimg } />
+                                <img id="founders" src={ davidimg } />
                                 </div>
                                 <div className="card-body">
                                     <h3 className="card-text">David Edouard</h3>
