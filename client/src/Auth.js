@@ -3,7 +3,7 @@ import './Auth.css';
 import { BrowserHistory } from 'react-router';
 // import GoogleStrategy from '.../auth.js';
 import { Button, ListGroup, ListGroupItem } from 'reactstrap';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 
 class Auth extends Component {
 
@@ -20,19 +20,21 @@ onFailure = (error) => {
 alert(error);
 };
 
+componentDidMount() {
+    axios.get('/api/user').then( ({data}) => {
+        if (data.user){
+            this.setState({isAuthenticated: true}) 
+        }
+    })
+}
 render() {
 let content = !!this.state.isAuthenticated ?
     (
     <div>
         <p>Authenticated</p>
+        
         <div>
-            {this.state.user.email}
-        </div>
-        <div>
-            <button onClick={this.logout}
-            className="logout-button">
-                Log out
-            </button>
+        <Redirect to="/calendar"/>
         </div>
     </div>
 ) :
