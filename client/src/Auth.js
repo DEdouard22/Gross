@@ -50,7 +50,7 @@ let content = !!this.state.isAuthenticated ?
         </div>
 
             <div className="google">
-                <button><a href="https://gross.herokuapp.com/auth/google">Sign In with Google</a></button>
+                <button><a href="https://gross.herokuapp.com/auth/google">>Sign In with Google</a></button>
             </div>
 
 
