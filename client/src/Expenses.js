@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
 import { Link, Route, Switch } from 'react-router-dom';
-import { Button, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Col, Form, FormGroup, Label, Input, FormText, Table } from 'reactstrap';
 import axios from 'axios';
 import ExpensesNavbar from './ExpensesNavbar.js';
 import AddExpense from './AddExpense.js';
@@ -63,6 +63,7 @@ class Expenses extends Component {
     componentDidMount() {
         axios.get('/api/expenses')
         .then(({data}) => {
+            console.log(data)
             this.setState({expenses:data})
         });
     };
@@ -91,94 +92,28 @@ class Expenses extends Component {
         return (
             <div className="Expenses">
                 <header className="container">
-                    <ExpensesNavbar /> 
+                    <ExpensesNavbar />
                 </header>
                 {/* <Button tag={ Link } to="/calendar" className="calendar" type="calendar">Calendar</Button> */}
                 <Button
-                    type="add" ><AddExpense addExpense={this.addExpense.bind(this)} buttonLabel="Add Transaction" {...this.props} />
+                    type="add" className="add" ><AddExpense addExpense={this.addExpense.bind(this)} buttonLabel="ADD TRANSACTION" {...this.props} />
                 </Button>
-                {/* <Form onSubmit={ this.addExpense.bind(this) }>
-                    <FormGroup row>
-                        <Label for="enterExpense" sm={2}>
-                            Description
-                        </Label>
-                        <Col sm={10}>
-                            <Input
-                                required
-                                type="expenseDescription"
-                                value={this.state.description}
-                                onChange={this.handleChange}
-                                name="description"
-                                id="expenseDescription"
-                                placeholder="Enter name of the expense" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="enterDate" sm={2}>
-                            Date
-                        </Label>
-                        <Col sm={10}>
-                            <Input
-                                required
-                                type="date"
-                                name="date"
-                                value={this.state.date}
-                                onChange={this.handleChange}
-                                id="date"
-                                placeholder="date of transaction" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="incomeDebt" sm={2}>
-                            Income or Debt
-                        </Label>
-                        <Col sm={10}>
-                            <Input
-                                required
-                                type="select"
-                                value={this.state.incomeDebt}
-                                onChange={this.handleChange}
-                                name="incomeDebt" id="expenseIncomeDebt">
-                                    <option disabled selected value="">please select</option>
-                                    <option>Income</option>
-                                    <option>Debt</option>
-                            </Input>
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="enterAmount" sm={2}>Amount</Label>
-                        <Col sm={10}>
-                            <Input
-                                required
-                                type="expenseAmount"
-                                onChange={this.handleChange}
-                                value={this.state.amount}
-                                name="amount"
-                                id="expenseAmount"
-                                placeholder="Enter amount of the expense" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="enterFrequency" sm={2}>Frequency</Label>
-                        <Col sm={10}>
-                            <Input
-                                required
-                                type="select"
-                                value={this.state.frequency}
-                                onChange={this.handleChange}
-                                name="frequency"
-                                id="expenseFrequency">
-                                    <option disabled selected value="">please select</option>
-                                    <option>Monthly</option>
-                                    <option>Bi-Monthly</option>
-                                    <option>Bi-Weekly</option>
-                                    <option>Weekly</option>
-                            </Input>
-                        </Col>
-                    </FormGroup>
-                    <Button type="submit">Submit</Button>
-                </Form> */}
-                {expensesJSX}
+                <Table  hover bordered>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Effective Date</th>
+                            <th>Income or Debt?</th>
+                            <th>Recurring Transaction?</th>
+                            <th>Frequency</th>
+                            <th>End Date</th>
+                            <th>Saved Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                        {expensesJSX}
+                </Table>
             </div>
         );
     };

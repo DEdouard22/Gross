@@ -10,6 +10,10 @@ import Login from './login.js';
 import Footer from './Footer.js'
 import './grosslogo.png';
 import About from './About';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faEdit, faTrash);
 
 class App extends Component {
 // state = {
@@ -35,7 +39,7 @@ render() {
               <Route path="/login" component={Login} />
               <Route path="/about" component={About} />
               <Route path="/" component={Home} />
-          </Switch>         
+          </Switch>
         < Footer />
   </div>
     );
