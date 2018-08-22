@@ -105,11 +105,6 @@ app.get('/api/user', (req, res, next) => {
     }
 })
 
-app.get('/test', (req, res, next) => {
-    res.json({ env: process.env })
-})
-
-
 // app.get('/auth/google', (req, res) => { console.log("Incoming request to auth"); res.send({"check": "checking"}); });
 app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
