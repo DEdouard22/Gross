@@ -4,6 +4,7 @@ import { BrowserHistory } from 'react-router';
 // import GoogleStrategy from '.../auth.js';
 import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 class Auth extends Component {
 
