@@ -29,7 +29,7 @@ let content = !!this.state.isAuthenticated ?
             {this.state.user.email}
         </div>
         <div>
-            <button onClick={this.logout} 
+            <button onClick={this.logout}
             className="logout-button">
                 Log out
             </button>
