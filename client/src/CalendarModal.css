@@ -1,0 +1,25 @@
+.modal-body {
+    display: block;
+    justify-content: center;
+}
+
+.modal-body > b {
+    display: block;
+    justify-content: center;
+}
+
+.modal-body > .CalModalIncSec {
+    display: block;
+    text-align: center;
+}
+
+.modal-body > .CalModalDebSec {
+    display: block;
+    text-align: center;
+}
+
+.sizeCell {
+    text-align: center;
+    width: 240px;
+}
+
