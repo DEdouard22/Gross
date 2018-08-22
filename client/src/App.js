@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import './App.css';
 import Expenses from './Expenses.js';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import UserAccount from './UserAccount.js';
 import Calendar from './Calendar';
 import Home from './Home.js';
@@ -12,15 +12,22 @@ import './grosslogo.png';
 import About from './About';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 library.add(faEdit, faTrash);
 
 class App extends Component {
-// state = {
-//   user: {
-//     id: 1,
-//   }
-// }
+  constructor() {
+    super();
+    this.state = { isAuthenticated: false, user: null, token: ''};
+}
+  componentDidMount() {
+    axios.get('/api/user').then( ({data}) => {
+        if (data.user){
+            this.setState({isAuthenticated: true}) 
+        }
+    })
+}
 
 render() {
   return (
@@ -28,7 +35,6 @@ render() {
         <div className="container">
           <div className="row">
         <div className="col-12">
-          {/* <GrossNavbar /> */}
           </div>
           </div>
           </div>
@@ -38,7 +44,13 @@ render() {
               <Route path="/user" component={UserAccount} />
               <Route path="/login" component={Login} />
               <Route path="/about" component={About} />
-              <Route path="/" component={Home} />
+              <Route exact path="/" render={() => (
+                this.state.isAuthenticated ? (
+                  <Redirect to="/calendar"/>
+                ) : (
+                  <Home/>
+                )
+              )}/>
           </Switch>
         < Footer />
   </div>
