@@ -42,7 +42,7 @@ let content = !!this.state.isAuthenticated ?
         <div className="row">
         <div className="column">
             <div className="facebook">
-                <button><a href="/auth/facebook/callback">Sign in with Facebook</a></button>
+                <button><a href={`${process.env.APP_URL}/auth/facebook`}>Sign in with Facebook</a></button>
             </div>
 
         <div>
@@ -50,7 +50,7 @@ let content = !!this.state.isAuthenticated ?
         </div>
 
             <div className="google">
-                <button><a href="/auth/google/callback">Sign In with Google</a></button>
+                <button><a href={`${process.env.APP_URL}/auth/google`}>Sign In with Google</a></button>
             </div>
 
 
