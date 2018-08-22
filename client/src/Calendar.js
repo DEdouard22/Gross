@@ -157,7 +157,7 @@ class Calendar extends Component {
                             <ListGroupItem className="viewDay" key={index}><CalendarModal dayInRow={dateFns.getDate(dayInRow)} currentDebts={currentDebts} currentIncomes={currentIncomes} className='dayModel' buttonLabel={dateFns.getDate(dayInRow)}  /></ListGroupItem>
                             { (currentIncomes.length < 1) ? <ListGroupItem>{"__"}</ListGroupItem> : (currentIncomes.length < 2) ? currentIncomes.map((transaction => <ListGroupItem className="IncomeListItem" key={index}>{transaction.description}</ListGroupItem>)) : <ListGroupItem className="IncomeListItem" key={index}>{'Incomes'}</ListGroupItem> }
                             { (currentDebts.length < 1) ? <ListGroupItem>{"__"}</ListGroupItem>: (currentDebts.length < 2) ? currentDebts.map((transaction => <ListGroupItem className="DebtListItem" key={index}>{transaction.description}</ListGroupItem>)) : <ListGroupItem className="DebtListItem" key={index}>{'Expenses'}</ListGroupItem> }
-                            { (currentDaySum < 0) ? <ListGroupItem>{currentDaySum}</ListGroupItem> : <ListGroupItem>{currentDaySum}</ListGroupItem>}
+                            { (currentDaySum < 0) ? <ListGroupItem>{'$ '}{currentDaySum}</ListGroupItem> : <ListGroupItem>{'$ '}{currentDaySum}</ListGroupItem>}
                         </ListGroup>
                     </div>
                 )
