@@ -213,7 +213,6 @@ class Calendar extends Component {
                 {this.renderHeader()}
                 {this.renderWeekDays()}
                 {this.renderCardRow()}
-                {/* <Button tag={ Link } to="/expenses" className="expenses" type="expenses">Expenses</Button> */}
             </div>
         )
     }
