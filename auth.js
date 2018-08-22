@@ -117,7 +117,7 @@ app.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
     res.cookie('auth', true);
-    res.redirect(`${process.env.APP_URL}/calendar`);
+    res.redirect('/');
 });
 
 // Redirect the user to Facebook for authentication.  When complete,
