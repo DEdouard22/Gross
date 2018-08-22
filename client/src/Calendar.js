@@ -27,13 +27,13 @@ class Calendar extends Component {
         <Container>
             < CalendarNavbar />
             <Row className="header">
-                <Col xs="2">
+                <Col xs="2-left">
                     <PaginationLink previous href="#" onClick={this.prevMonth}/>
                 </Col>
                 <Col xs="8">
                     <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
                 </Col>
-                <Col xs="2">
+                <Col xs="2-right">
                     <PaginationLink next href="#" onClick={this.nextMonth}/>
                 </Col>
             </Row>
@@ -59,7 +59,7 @@ class Calendar extends Component {
                     <Row className="days">{days}</Row>
                 </Container>
         )
-      };
+    };
 
     renderCardRow() {
         const { currentMonth } = this.state;

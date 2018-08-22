@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './Auth.css';
 import { BrowserHistory } from 'react-router';
+// import GoogleStrategy from '.../auth.js';
+import { Button, ListGroup, ListGroupItem } from 'reactstrap';
+import { Link, Route, Switch } from 'react-router-dom';
 
 class Auth extends Component {
 
@@ -39,7 +42,7 @@ let content = !!this.state.isAuthenticated ?
         <div className="row">
         <div className="column">
             <div className="facebook">
-                <button><a href="http://localhost:3001/auth/facebook">Login with Facebook</a></button>
+                <button><a href="http://localhost:3001/auth/facebook">Sign in with Facebook</a></button>
             </div>
 
         <div>
@@ -47,8 +50,9 @@ let content = !!this.state.isAuthenticated ?
         </div>
 
             <div className="google">
-                <button><a href="http://localhost:3001/auth/google">Login with Google</a></button>
+                <button><a href="http://localhost:3001/auth/google">Sign In with Google</a></button>
             </div>
+
 
         </div>
         </div>

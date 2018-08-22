@@ -29,6 +29,7 @@ h1 {
 
 .facebook button a {
     color: white;
+    text-decoration: none;
 }
 
 .facebook button:hover {
@@ -53,7 +54,7 @@ h1 {
 
 .google button a {
     color: white;
-    font-family: 'Zilla Slab';
+    text-decoration: none;
 }
 
 .google button:hover {
