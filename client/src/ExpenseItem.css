@@ -19,5 +19,11 @@
     width: 50%;
 }
 .button {
-    color: black
+    color: black;
+    background: transparent;
+    border: none;
+}
+.button:hover {
+    background: transparent;
+    border: none;
 }

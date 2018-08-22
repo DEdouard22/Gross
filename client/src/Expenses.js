@@ -47,6 +47,7 @@ class Expenses extends Component {
     componentDidMount() {
         axios.get('/api/expenses')
         .then(({data}) => {
+            console.log(data)
             this.setState({expenses:data})
         });
     };
@@ -92,7 +93,6 @@ class Expenses extends Component {
                             <th>Frequency</th>
                             <th>End Date</th>
                             <th>Saved Amount</th>
-                            <th></th>
                             <th></th>
                         </tr>
                     </thead>

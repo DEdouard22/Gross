@@ -60,8 +60,8 @@ class AddExpense extends Component {
                     <ModalHeader toggle={ this.toggle }>Add Transaction</ModalHeader>
                     <ModalBody className="modalBody">
                         <Form onSubmit={ this.props.addExpense }>
-                            <FormGroup row>
-                                <Label for="enterExpense" sm={2}>
+                            <FormGroup row className="allFields">
+                                <Label for="enterExpense">
                                     Description
                                 </Label>
                                 <Col sm={10}>
@@ -76,7 +76,7 @@ class AddExpense extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="enterDate" sm={2}>
+                                <Label for="enterDate">
                                     Effective Date
                                 </Label>
                                 <Col sm={10}>
@@ -91,7 +91,7 @@ class AddExpense extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="incomeDebt" sm={2}>
+                                <Label for="incomeDebt">
                                     Income or Debt
                                 </Label>
                                 <Col sm={10}>
@@ -108,7 +108,9 @@ class AddExpense extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="enterAmount" sm={2}>Amount</Label>
+                                <Label for="enterAmount">
+                                    Amount
+                                </Label>
                                 <Col sm={10}>
                                     <Input
                                         required
@@ -121,7 +123,9 @@ class AddExpense extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="enterFrequency" sm={2}>Frequency</Label>
+                                <Label for="enterFrequency">
+                                    Frequency
+                                </Label>
                                 <Col sm={10}>
                                     <Input
                                         required
@@ -139,7 +143,7 @@ class AddExpense extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label check for="enterRecurring" sm={2}>
+                                <Label check for="enterRecurring">
                                     Recurring Transaction?
                                 </Label>
                                 <Col sm={10}>
@@ -148,13 +152,14 @@ class AddExpense extends Component {
                                         value={this.state.checkboxState}
                                         onChange={this.handleChange}
                                         name="recurring"
+                                        className="check"
                                         onClick={this.toggleCheckbox.bind(this)}
                                         id="recurring">
                                     </Input>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="endDate" sm={2}>
+                                <Label for="endDate">
                                     End date of recurring transaction:
                                 </Label>
                                 <Col sm={10}>
@@ -171,7 +176,7 @@ class AddExpense extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="savedAmount" sm={2}>Saved Amount</Label>
+                                <Label for="savedAmount">Saved Amount</Label>
                                 <Col sm={10}>
                                     {this.state.incomeDebt == 'Income' &&
                                         <Input

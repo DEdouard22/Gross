@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, M
 import axios from 'axios';
 import './EditExpense.css';
 import ExpenseItem from './ExpenseItem.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class EditExpense extends Component {
 
@@ -69,6 +70,7 @@ class EditExpense extends Component {
     }
 
     componentDidMount() {
+        console.log("Heres your stuff", this.props)
         axios.get('/api/expenses')
         .then(({data}) => {
             this.setState({expenses:data})
@@ -82,7 +84,13 @@ class EditExpense extends Component {
     render () {
         return (
             <div>
-                <Button onClick={ this.toggle } className="EditExpense">{ this.props.buttonLabel }</Button>
+                <Button onClick={ this.toggle } className="button"> { this.props.icon }
+                    <FontAwesomeIcon
+                        type="edit"
+                        icon="edit"
+                        size="lg">
+                    </FontAwesomeIcon>
+                </Button>
                 <Modal
                     isOpen={ this.state.modal }
                     toggle={ this.toggle }
@@ -95,15 +103,14 @@ class EditExpense extends Component {
                                     Description
                                 </Label>
                                 <Input
-                                required
-                                type="expenseDescription"
-                                defaultValue={this.props.description}
-                                onChange={this.handleChange}
-                                name="description"
-                                id="expenseDescription" />
+                                    type="expenseDescription"
+                                    defaultValue={this.props.description}
+                                    onChange={this.handleChange}
+                                    name="description"
+                                    id="expenseDescription" />
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="effectiveDate" sm={2}>
+                                <Label for="effectiveDate">
                                     Effective Date
                                 </Label>
                                 <Input
@@ -116,7 +123,7 @@ class EditExpense extends Component {
                                 </Input>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="incomeDebt" sm={2}>
+                                <Label for="incomeDebt">
                                     Income or Debt
                                 </Label>
                                 <Input
@@ -129,7 +136,7 @@ class EditExpense extends Component {
                                 </Input>
                             </FormGroup>
                             <FormGroup>
-                                <Label for="enterAmount" sm={2}>
+                                <Label for="enterAmount">
                                     Enter Amount: $
                                 </Label>
                                 <Input
@@ -141,7 +148,7 @@ class EditExpense extends Component {
                                     id="expenseAmount" />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="enterFrequency" sm={2}>
+                                <Label for="enterFrequency">
                                     Frequency
                                 </Label>
                                 <Input
@@ -159,24 +166,26 @@ class EditExpense extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label check for="enterRecurring">
+                                    Recurring Transaction?{' '}
                                     <Input
                                         type="checkbox"
-                                        defaultValue={this.state.checkboxState}
-                                        checked={this.state.checkboxState}
+                                        // defaultValue={this.state.checkboxState}
+                                        checked={this.props.recurring }
                                         onChange={this.handleChange}
                                         onClick={this.toggleCheckbox}
                                         name="recurring"
+                                        className="check"
                                         id="recurring">
-                                    </Input>{' '}
-                                    Recurring Transaction?
+                                    </Input>
                                 </Label>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="endDate" sm={2}>
+                                <Label for="endDate" >
                                     End date of recurring transaction:
                                 </Label>
                                     {this.state.checkboxState &&
                                         <Input
+                                            required
                                             type="date"
                                             defaultValue={this.props.endDate}
                                             onChange={this.handleChange}
@@ -187,7 +196,9 @@ class EditExpense extends Component {
                                     }
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="savedAmount" sm={2}>Saved Amount: $</Label>
+                                <Label for="savedAmount">
+                                    Saved Amount: $
+                                </Label>
                                     {this.props.incomeDebt == 'Income' &&
                                         <Input
                                             type="savedAmount"

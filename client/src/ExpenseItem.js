@@ -18,42 +18,47 @@ class ExpenseItem extends Component {
                     <td>{this.props.description}</td>
                     <td>{ this.props.amount}</td>
                     <td>
-                        <Moment format="MM/DD/YYYY">
-                            {this.props.scheduledDay}
-                        </Moment>
+                        {this.props.scheduledDay ?
+                            <Moment format="MM/DD/YYYY">
+                                {this.props.scheduledDay}
+                            </Moment> : "" }
                     </td>
                     <td>{this.props.incomeDebt}</td>
-                    <td>{this.props.recurring}</td>
+                    <td>{this.props.recurring ? `Yes` : `No`}</td>
                     <td>{this.props.frequency}</td>
                     <td>
-                        <Moment format="MM/DD/YYYY">
-                            {this.props.endDate}
-                        </Moment>
+                        {this.props.recurring == true ?
+                            <Moment format="MM/DD/YYYY">
+                                {this.props.endDate}
+                            </Moment> : "" }
                     </td>
-                    <td>{ this.props.savedAmount}</td>
-                    {/* <Button
-                        type="edit" ><EditExpense updateSingleTransaction={this.props.updateSingleTransaction} buttonLabel="Edit" {...this.props} />
-                    </Button> */}
-                    <FontAwesomeIcon
-                        className="button"
-                        type="edit"
-                        icon="edit"
-                        size="lg">
-                        <EditExpense updateSingleTransaction={this.props.updateSingleTransaction} buttonLabel="Edit" {...this.props} />
-                    </FontAwesomeIcon>
-                    {/* <Button
-                        onClick={ () => this.props.deleteTransaction(this.props.id) }
-                        type="delete" buttonLabel="Delete">Delete
-                    </Button> */}
-                    <FontAwesomeIcon
-                        onClick={ () => this.props.deleteTransaction(this.props.id) }
-                        icon="trash"
-                        className="button"
-                        size="lg"
-                        type="delete" buttonLabel="Delete">
-                    </FontAwesomeIcon>
+                    <td>
+                        {this.props.incomeDebt == 'Income' ?
+                                this.props.savedAmount : "" }
+                    </td>
+                    <td>
+                        <Button className="button">
+                            <EditExpense updateSingleTransaction={this.props.updateSingleTransaction}
+                            buttonLabel="Edit" {...this.props} />
+                        </Button>
+                        <Button
+                            onClick={ () => this.props.deleteTransaction(this.props.id) }
+                            className="button"
+                            type="delete"
+                            buttonLabel="Delete">
+                            <FontAwesomeIcon
+                                icon="trash"
+                                size="lg">
+                            </FontAwesomeIcon>
+                        </Button>
+                    </td>
                 </tr>
             </tbody>
+        );
+    ;}
+};
+
+export default ExpenseItem;
 
 
             // <div className="ExpenseItem">
@@ -89,8 +94,5 @@ class ExpenseItem extends Component {
 
             //     </div>
             // </div>
-        )
-    };
-};
 
-export default ExpenseItem;
+
