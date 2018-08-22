@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table, Row, Col } from 'reactstrap';
+import './CalendarModal.css'
 
 class CalendarModal extends React.Component {
   constructor(props) {
@@ -44,8 +45,8 @@ class CalendarModal extends React.Component {
         // )
         return (
           <tr>
-              <td>{Deb.description}</td>
-              <td>{Deb.amount}</td>
+              <td class="sizeCell">{Deb.description}</td>
+              <td class="sizeCell">{Deb.amount}</td>
           </tr>
       );
     })
@@ -55,36 +56,42 @@ class CalendarModal extends React.Component {
         <Modal isOpen={this.state.modal} fade={false} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.dayInRow}</ModalHeader>
           <ModalBody>
-            <b>Incomes for this day</b>
+            <Row  className="CalModalIncSec">
+              <b>Incomes for this day</b>
+            </Row>
+            <Row>
               <Table bordered>  
                   <thead>
                     <tr>
-                      <th>Income</th>
-                      <th>Amount</th>
+                      <th class="sizeCell">Income</th>
+                      <th class="sizeCell">Amount</th>
                     </tr>
                   </thead>
                   <tbody>
                     {incomeJSX}
                   </tbody>
               </Table>
+            </Row>
           </ModalBody>
           <ModalBody>
-            <b>Debts for this day</b>
-            <Table bordered>  
-              <thead>
-                <tr>
-                  <th>Debt</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-              {debtJSX}
-              </tbody>
-            </Table>  
+            <Row className="CalModalDebSec">
+              <b>Debts for this day</b>
+            </Row>
+            <Row>
+              <Table bordered>  
+                <thead>
+                  <tr>
+                  <th class="sizeCell">Debt</th>
+                  <th class="sizeCell">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {debtJSX}
+                </tbody>
+              </Table>
+            </Row>  
           </ModalBody>
           <ModalFooter>
-            {/* <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button> */}
           </ModalFooter>
         </Modal>
       </div>

@@ -4,6 +4,14 @@
     /* width: 600px; */
     margin-top: 20px;
 }
-.calendar {
-    margin: 5px;
+.add {
+    margin: 10px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: rgb(49, 47, 47);
+    text-shadow: 2px 2px #181f54;
+    font-size: 1.5vw;
+    font-family: 'Zilla Slab';
+    font-weight: 300;
+    text-align: center;
 }
