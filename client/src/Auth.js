@@ -29,7 +29,7 @@ let content = !!this.state.isAuthenticated ?
             {this.state.user.email}
         </div>
         <div>
-            <button onClick={this.logout} 
+            <button onClick={this.logout}
             className="logout-button">
                 Log out
             </button>
@@ -42,7 +42,7 @@ let content = !!this.state.isAuthenticated ?
         <div className="row">
         <div className="column">
             <div className="facebook">
-                <button><a href="http://localhost:3001/auth/facebook">Sign in with Facebook</a></button>
+                <button><a href="https://gross.herokuapp.com/auth/facebook">Sign in with Facebook</a></button>
             </div>
 
         <div>
@@ -50,7 +50,7 @@ let content = !!this.state.isAuthenticated ?
         </div>
 
             <div className="google">
-                <button><a href="http://localhost:3001/auth/google">Sign In with Google</a></button>
+                <button><a href="https://gross.herokuapp.com/auth/google">Sign In with Google</a></button>
             </div>
 
 
