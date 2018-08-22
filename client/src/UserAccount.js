@@ -5,8 +5,8 @@ import './UserAccount.css';
 import logo from './userIcon.png';
 import axios from 'axios';
 import UserNavbar from './UserNavbar.js';
-import SaveGoal from './SaveGoal.js';
 import { homedir } from 'os';
+import { parse } from 'url';
 
 class UserAccount extends Component {
     constructor(props) {
@@ -19,6 +19,8 @@ class UserAccount extends Component {
             dropdownOpenPay: false,
             collapse: false,
             transactions: [],
+            saveGoal: 0,
+            savePercentage: 0
         };
 
         this.getUserData = this.getUserData.bind(this);
@@ -50,6 +52,7 @@ class UserAccount extends Component {
         axios.get(`${url}`)
         .then(res => {
             this.setState({
+                id: res.data.id,
                 firstName: res.data.firstName,
                 lastName: res.data.lastName,
                 email: res.data.email,
@@ -84,16 +87,18 @@ class UserAccount extends Component {
         let transactions = this.state.transactions;  
         transactions.forEach((transaction) => {
             if(transaction.incomeDebt === "Debt"){   
-                if (transaction.frequency === "Bi-Monthly"){
-                    debtSum = debtSum + (transaction.amount * 2); 
-                } else if (transaction.frequency === "Bi-Weekly"){
-                    debtSum = debtSum + (transaction.amount * 8);
-                } else if (transaction.frequency === "Weekly"){
-                    debtSum = debtSum + (transaction.amount * 4);
-                } else {
-                    debtSum = debtSum + transaction.amount;
-                }           
+            //     if (transaction.frequency === "Bi-Monthly"){
+            //         debtSum = debtSum + (transaction.amount * 2); 
+            //     } else if (transaction.frequency === "Bi-Weekly"){
+            //         debtSum = debtSum + (transaction.amount * 8);
+            //     } else if (transaction.frequency === "Weekly"){
+            //         debtSum = debtSum + (transaction.amount * 4);
+            //     } else {
+            //         debtSum = debtSum + transaction.amount;
+            //     }  
+               debtSum = debtSum + parseFloat(transaction.amount);      
             }
+            
         })
         return (
             <tr>
@@ -123,16 +128,18 @@ class UserAccount extends Component {
         let transactions = this.state.transactions;  
         transactions.forEach((transaction) => {
             if (transaction.incomeDebt === "Income"){ 
-                if (transaction.frequency === "Bi-Monthly"){
-                    incomeSum = incomeSum + (transaction.amount * 2); 
-                } else if (transaction.frequency === "Bi-Weekly"){
-                    incomeSum = incomeSum + (transaction.amount * 8);
-                } else if (transaction.frequency === "Weekly"){
-                    incomeSum = incomeSum + (transaction.amount * 4);
-                } else {
-                    incomeSum = incomeSum + transaction.amount;
-                }            
+            //     if (transaction.frequency === "Bi-Monthly"){
+            //         incomeSum = incomeSum + (transaction.amount * 2); 
+            //     } else if (transaction.frequency === "Bi-Weekly"){
+            //         incomeSum = incomeSum + (transaction.amount * 8);
+            //     } else if (transaction.frequency === "Weekly"){
+            //         incomeSum = incomeSum + (transaction.amount * 4);
+            //     } else {
+            //         incomeSum = incomeSum + transaction.amount;
+            //     } 
+                incomeSum = incomeSum + parseFloat(transaction.amount);               
             }
+            
         })
         return (
             <tr>
@@ -142,16 +149,38 @@ class UserAccount extends Component {
         );
     }
 
+    saveAmountSum() {
+        let saveAmount = 0;
+        let transactions = this.state.transactions;
+        transactions.forEach((transaction) => {
+            if (transaction.savedAmount){
+                saveAmount = saveAmount + parseFloat(transaction.savedAmount);
+                console.log(saveAmount);
+                console.log(this.state.saveGoal);
+            }
+        }) 
+        let savePercentage = (parseFloat(saveAmount) / parseFloat(this.state.saveGoal)) * 100;
+        console.log(savePercentage);
+        this.setState({savePercentage: savePercentage});
+    }
+
     addSaveGoal = (event) =>{
         event.preventDefault();
+        // get value of field
+        let newSaveGoal = document.getElementById("saveGoal").value;
+        console.log(newSaveGoal);
+        //add field value to existing value
+        // set below to new calculation
+
         var editSaveGoal = {
-            saveGoal: this.state.saveGoal
+            saveGoal: newSaveGoal
         }
         console.log(editSaveGoal);
-        axios.put(`/api/users/${this.props.id}`, editSaveGoal)
+        axios.put(`/api/users/savegoal/${this.state.id}`, editSaveGoal)
         .then((res) => {
-            this.setState({saveGoal:res.data});
-            console.log("hi");
+           editSaveGoal = this.setState({saveGoal:res.data.saveGoal});
+            console.log(this.state.saveGoal);
+            this.saveAmountSum();
         });
     }
 
@@ -174,7 +203,7 @@ class UserAccount extends Component {
                 <Collapse isOpen={this.state.collapse}>
                     <div>
                         <Dropdown isOpen={this.state.dropdownOpenPay} toggle={this.togglePayment}>
-                            <div className="payment">
+                            {/* <div className="payment">
                                 <DropdownToggle caret
                                     tag="span" 
                                     onClick={this.togglePayment} 
@@ -182,7 +211,7 @@ class UserAccount extends Component {
                                     aria-expanded={this.state.dropdownOpenPay}>    
                                     Payment Methods
                                 </DropdownToggle>
-                            </div>
+                            </div> */}
                             <h2>Expenses and Incomes</h2>
                             <div className="expenseDescription">
                                 <Row>
@@ -232,14 +261,14 @@ class UserAccount extends Component {
                                     <Label for="saveGoal" sm={1} size="lg">Savings</Label>
                                     <Col sm={9}>
                                         <Input type="number" name="number" id="saveGoal" placeholder="Enter"/> 
-                                        <FormText>Input amount from your income you would like to save</FormText>
+                                        <FormText>Input your savings goal</FormText>
                                     </Col>
                                     <Button sm={2} onClick={ this.addSaveGoal.bind(this) }>Save</Button>
                                 </FormGroup>
                             </Form>
                             <div className="goals text-left">Saving Goals
                                 {/* add function to take savings goal and a percentage the user wants to save of their income sum and change value attribute to {transaction."percentage"} */}
-                                <Progress animated color="success" value="25"/>  
+                                <Progress animated color="success" value={this.state.savePercentage}/>  
                             </div>
                         </div>
                     </div>

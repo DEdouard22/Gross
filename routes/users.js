@@ -28,17 +28,30 @@ router.get('/', function(req, res, next) {
   })
 });
 
-router.put('/:id', ( req, res, next ) => {
+// router.put('/:id', ( req, res, next ) => {
+//   console.log(req);
+//   models.Transaction.findById (req.params.id)
+//   .then(transactions => {
+//       transactions.update(req.body)
+//       .then((transaction) => {
+//           res.json(transactions);
+//       })
+//       .catch(next)
+//   })
+// })
+
+router.put('/savegoal/:id', ( req, res, next ) => {
   console.log(req);
-  models.Transaction.findById (req.params.id)
-  .then(transactions => {
-      transactions.update(req.body)
-      .then((transaction) => {
-          res.json(transactions);
+  models.User.findById(req.params.id)
+  .then(user => {
+      user.update({
+        saveGoal: req.body.saveGoal
+      })
+      .then((user) => {
+          res.json(user);
       })
       .catch(next)
   })
 })
-
 
 module.exports = router;
