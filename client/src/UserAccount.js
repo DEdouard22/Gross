@@ -47,7 +47,7 @@ class UserAccount extends Component {
     }
 
     getUserData(){
-        const url = 'http://localhost:3000/api/users/';
+        const url = 'https://gross.herokuapp.com/api/users/';
 
         axios.get(`${url}`)
         .then(res => {
