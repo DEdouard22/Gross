@@ -3,7 +3,7 @@ import './About.css';
 import carlyimg from './carly.jpg';
 import kamimg from './kam.jpg';
 import davidimg from './david.png';
-import gabeimg from '.gabe.jpeg';
+import gabeimg from './gabe.jpeg';
 
 
 const Founders = (props) => {
