@@ -167,8 +167,9 @@ class EditExpense extends Component {
                             <FormGroup>
                                 <Label check for="enterRecurring">
                                     Recurring Transaction?{' '}
-                                    <span>
+                                    <Col sm={10}>
                                         <Input
+                                            sm={10}
                                             type="checkbox"
                                             // defaultValue={this.state.checkboxState}
                                             checked={this.props.recurring }
@@ -178,7 +179,7 @@ class EditExpense extends Component {
                                             className="check"
                                             id="recurring">
                                         </Input>
-                                    </span>
+                                    </Col>
                                 </Label>
                             </FormGroup>
                             <FormGroup row>
