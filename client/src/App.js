@@ -48,7 +48,7 @@ render() {
                 this.state.isAuthenticated ? (
                   <Redirect to="/calendar"/>
                 ) : (
-                  <Home/>
+                  {Home}
                 )
               )}/>
           </Switch>
