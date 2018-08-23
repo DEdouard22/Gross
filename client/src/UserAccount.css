@@ -69,7 +69,7 @@ h2 {
 .saveGoalComponent h2 {
     margin-bottom: 5px;
 }
-.saveGoalComponent button {
+.saveGoalComponent > button {
     width: 70px;
     height: 39px;
     font-size: 1.5vw;
