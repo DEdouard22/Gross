@@ -1,35 +1,36 @@
 Gro$$ Financial Tracker
 Gro$$ is a responsive web application comprised of a PERN stack (Postgres, Express, React, & NodeJS) that allows you to track debt, income and savings goals. It also incorporates both Google Strategy and Facebook Strategy as an additional authentication feature.
 
-HomePage Photo
+![HomePage](./header.jpeg)
 
 
 Login
 The login page allows the users to log into the app using either their Facebook or Google accounts for authentication.
 
-Login Page Photo
+![LoginPage](./readmepics/Login.png)
 
 CalendarPage
 The calendar page allows the user to view their transactions by month in order to be aware of what funds are coming in and going out. 
 
-Calendar Page Photo
+![CalPage](./readmepics/Calendar.png)
 
 
 ExpensesPage
 The expenses page allows the users to add transactions, whether income, debt, one-time or recurring. The transactions are then shown in a table and also pushed to the calendar for that user's account
 
-Expense Page Photo
+![ExpensesPage](./readmepics/Expenses.png)
 
 UserPage
 The userpage will allow users to see their own personal profile as well as their overall income and debt totals. Additionally, the user will see a progress bar of their savings goals. 
 
-UserPage Photo
+![UserPage](./readmepics/User.png)
 
 
 About Gross
 The about us page allows users to see the authors of the site and get a glimpse of our specialties and personalities.
 
-About Photo
+![AboutPage](./readmepics/About.png)
+
 
 Additional Information
 Installation
@@ -39,8 +40,8 @@ Axios, React, React-Bootstrap, React-Coverflow, React-Dom, React-Router-Dom,  Bc
 Authors
 Kamilah Kassim - kamikassim
 Carly Harper - carlyharper
-David Eduoard - 
-Gabriel Eduoard - 
+David Eduoard - DEdouard22
+Gabriel Eduoard - edgabriel92
 
 License
 This project is licensed under the MIT License.
