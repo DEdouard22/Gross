@@ -7,7 +7,7 @@ Gro$$ is a responsive web application comprised of a PERN stack (Postgres, Expre
 Login
 The login page allows the users to log into the app using either their Facebook or Google accounts for authentication.
 
-![LoginPage](./readmepics/Login.png)
+![LoginPage](/readmepics/Login.png)
 
 CalendarPage
 The calendar page allows the user to view their transactions by month in order to be aware of what funds are coming in and going out. 
