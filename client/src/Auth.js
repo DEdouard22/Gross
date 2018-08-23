@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './Auth.css';
 import { BrowserHistory } from 'react-router';
-// import GoogleStrategy from '.../auth.js';
 import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 class Auth extends Component {
 
@@ -49,7 +47,6 @@ let content = !!this.state.isAuthenticated ?
             <div className="google">
                 <button><a href="https://gross.herokuapp.com/auth/google">Sign In with Google</a></button>
             </div>
-
 
         </div>
         </div>
