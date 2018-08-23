@@ -83,7 +83,7 @@ class EditExpense extends Component {
 
     render () {
         return (
-            <div>
+            <div className="EditExpense">
                 <Button onClick={ this.toggle } className="button"> { this.props.icon }
                     <FontAwesomeIcon
                         type="edit"
@@ -167,16 +167,18 @@ class EditExpense extends Component {
                             <FormGroup>
                                 <Label check for="enterRecurring">
                                     Recurring Transaction?{' '}
-                                    <Input
-                                        type="checkbox"
-                                        // defaultValue={this.state.checkboxState}
-                                        checked={this.props.recurring }
-                                        onChange={this.handleChange}
-                                        onClick={this.toggleCheckbox}
-                                        name="recurring"
-                                        className="check"
-                                        id="recurring">
-                                    </Input>
+                                    <span>
+                                        <Input
+                                            type="checkbox"
+                                            // defaultValue={this.state.checkboxState}
+                                            checked={this.props.recurring }
+                                            onChange={this.handleChange}
+                                            onClick={this.toggleCheckbox}
+                                            name="recurring"
+                                            className="check"
+                                            id="recurring">
+                                        </Input>
+                                    </span>
                                 </Label>
                             </FormGroup>
                             <FormGroup row>
