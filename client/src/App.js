@@ -44,13 +44,14 @@ render() {
               <Route path="/user" component={UserAccount} />
               <Route path="/login" component={Login} />
               <Route path="/about" component={About} />
-              <Route exact path="/" render={() => (
+              <Route path="/" component={Home} />
+              {/* <Route exact path="/" render={() => (
                 this.state.isAuthenticated ? (
                   <Redirect to="/calendar"/>
                 ) : (
                   <Home/>
-                )
-              )}/>
+                ) */}
+              {/* )}/> */}
           </Switch>
         < Footer />
   </div>
