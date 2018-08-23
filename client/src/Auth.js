@@ -26,9 +26,9 @@ let content = !!this.state.isAuthenticated ?
     <div>
         <p>Authenticated</p>
         
-        <div>
+        {/* <div>
         <Redirect to="/calendar"/>
-        </div>
+        </div> */}
     </div>
 ) :
 (

@@ -1,7 +1,7 @@
 Gro$$ Financial Tracker
 Gro$$ is a responsive web application comprised of a PERN stack (Postgres, Express, React, & NodeJS) that allows you to track debt, income and savings goals. It also incorporates both Google Strategy and Facebook Strategy as an additional authentication feature.
 
-![HomePage](./header.jpeg)
+![alt text](./readmepics/header.jpeg)
 
 
 Login

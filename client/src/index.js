@@ -7,5 +7,5 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
-// registerServiceWorker();
+// registerServiceWorker(); Adam said to comment this out as it was causing the auth redirect to fail
 
