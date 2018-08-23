@@ -9,7 +9,7 @@ const Header = (props) => {
         <div className="wrapper">
             <div className="row">
                 <div className="col-12" id="App-header">
-                    <h1 className="App-title">Gross</h1>
+                    <h1 className="App-title">Gro$$</h1>
                 </div>
             </div>    
             <div className="row">

@@ -3,6 +3,7 @@ import './About.css';
 import carlyimg from './carly.jpg';
 import kamimg from './kam.jpg';
 import davidimg from './david.png';
+import gabeimg from '.gabe.jpeg';
 
 
 const Founders = (props) => {
@@ -50,7 +51,7 @@ const Founders = (props) => {
                     <div className="col-3">
                         <div className="card">
                             <div >
-                                <img id="founders" src={ carlyimg } />
+                                <img id="founders" src={ gabeimg } />
                             </div>
                             <div className="card-body">
                                 <h3 className="card-text">Gabriel Edouard</h3>
