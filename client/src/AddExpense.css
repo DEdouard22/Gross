@@ -6,3 +6,7 @@
     font-family: 'Zilla Slab';
     padding: 10px;
 }
+
+.position-relative {
+    margin: 0 auto;
+}
