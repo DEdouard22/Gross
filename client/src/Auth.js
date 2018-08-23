@@ -21,13 +21,7 @@ onFailure = (error) => {
 alert(error);
 };
 
-componentDidMount() {
-    axios.get('/api/user').then( ({data}) => {
-        if (data.user){
-            this.setState({isAuthenticated: true}) 
-        }
-    })
-}
+
 render() {
 let content = !!this.state.isAuthenticated ?
     (
