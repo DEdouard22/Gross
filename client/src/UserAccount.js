@@ -192,12 +192,12 @@ class UserAccount extends Component {
                 <Jumbotron className="jumbotron" fluid>
                     <Container fluid>
                         <h2>Welcome</h2>
-                        <h1 className="display-3">{this.state.lastName} Household</h1>
+                        <h1 className="display-3">{this.state.firstName}</h1>
                         <p className="nav-help">Click icon to display your information</p>
                         <Row>
                             <img onClick={this.imageClick} src={logo} className="userIcon"/>     
                         </Row>
-                        <h2>{this.state.firstName}</h2>
+                        {/* <h2>{this.state.firstName}</h2> */}
                     </Container>
                 </Jumbotron>
                 <Collapse isOpen={this.state.collapse}>
